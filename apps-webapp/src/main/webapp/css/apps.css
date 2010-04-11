@@ -153,6 +153,11 @@ code {
     margin-left:        -92px;
     border:             none;
 }
+.twitter {
+    position:           fixed;
+    bottom:             2em;
+    left:               1em;
+}
 
 /*******************************************************************************
  * GLOBAL PROPERTIES *

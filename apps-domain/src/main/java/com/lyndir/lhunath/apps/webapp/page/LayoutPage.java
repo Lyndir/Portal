@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.collect.ImmutableList;
+import com.lyndir.lhunath.apps.model.AppVersion;
+import com.lyndir.lhunath.apps.webapp.AppsSession;
+import com.lyndir.lhunath.apps.webapp.JavaScriptProvider;
 import org.apache.wicket.RestartResponseException;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxFallbackLink;
@@ -26,17 +30,12 @@ import org.apache.wicket.util.template.JavaScriptTemplate;
 import org.apache.wicket.util.template.PackagedTextTemplate;
 import org.apache.wicket.util.template.TextTemplate;
 
-import com.google.common.collect.ImmutableList;
-import com.lyndir.lhunath.apps.model.AppVersion;
-import com.lyndir.lhunath.apps.webapp.AppsSession;
-import com.lyndir.lhunath.apps.webapp.JavaScriptProvider;
-
 
 public class LayoutPage extends WebPage {
 
     private static final long serialVersionUID = 1L;
 
-    List<ITab>                headTabsList;
+    List<ITab> headTabsList;
 
 
     List<ITab> getTabs() {
@@ -49,7 +48,7 @@ public class LayoutPage extends WebPage {
 
     /**
      * Override me to add your own tabs.
-     * 
+     *
      * @return A list of {@link ITab}s that will be used for navigation at the top of the page.
      */
     protected List<ITab> buildTabs() {
@@ -92,16 +91,13 @@ public class LayoutPage extends WebPage {
     }
 
 
-    int                selectedTabIndex;
-    HeaderContributor  selectedTheme;
+    int selectedTabIndex;
+    HeaderContributor selectedTheme;
     WebMarkupContainer headTabsContainer;
 
 
     /**
-     * @param pageTitle
-     *            The contents of the <code>title</code> tag.
-     * @param headTabsList
-     *            A list of tabs to put in the header.
+     * Create a new LayoutPage.
      */
     public LayoutPage() {
 
@@ -150,11 +146,11 @@ public class LayoutPage extends WebPage {
                             panelJs = ((JavaScriptProvider) contentPanel).getProvidedJavaScript();
                         Map<String, Object> trackPanelVariables = new HashMap<String, Object>();
                         trackPanelVariables.put( "googleAnalyticsID", //
-                                AppVersion.getLatest().getApp().getGoogleAnalyticsID() );
+                                                 AppVersion.getLatest().getApp().getGoogleAnalyticsID() );
                         trackPanelVariables.put( "pageView", //
-                                contentPanel.getClass().getSimpleName() );
+                                                 contentPanel.getClass().getSimpleName() );
                         final String trackPanelJs = new JavaScriptTemplate( new PackagedTextTemplate( LayoutPage.class,
-                                "trackPage.js" ) ).asString( trackPanelVariables );
+                                                                                                      "trackPage.js" ) ).asString( trackPanelVariables );
 
                         LayoutPage.this.addOrReplace( contentPanel );
 
@@ -226,11 +222,11 @@ public class LayoutPage extends WebPage {
         // Page TRACKING.
         Map<String, Object> trackPageVariables = new HashMap<String, Object>();
         trackPageVariables.put( "googleAnalyticsID", //
-                AppVersion.getLatest().getApp().getGoogleAnalyticsID() );
+                                AppVersion.getLatest().getApp().getGoogleAnalyticsID() );
         trackPageVariables.put( "pageView", //
-                contentPanel.getClass().getSimpleName() );
+                                contentPanel.getClass().getSimpleName() );
         add( new StringHeaderContributor( new JavaScriptTemplate( new PackagedTextTemplate( LayoutPage.class,
-                "trackPage.js" ) ).asString( trackPageVariables ) ) );
+                                                                                            "trackPage.js" ) ).asString( trackPageVariables ) ) );
 
         // OnShowJavaScript
         String js = null;
@@ -256,8 +252,8 @@ public class LayoutPage extends WebPage {
     }
 
     /**
-     * @param wicketId
-     *            The wicket ID that the panel should have.
+     * @param wicketId The wicket ID that the panel should have.
+     *
      * @return The {@link Panel} to show as the content before any tabs have been selected.
      */
     protected Panel getDefaultPanel(String wicketId) {

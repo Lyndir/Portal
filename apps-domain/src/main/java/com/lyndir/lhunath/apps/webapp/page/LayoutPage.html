@@ -18,12 +18,14 @@
         <script type="text/javascript" src="js/shadowbox-3.0/shadowbox.js"></script>
         <link rel="stylesheet" type="text/css" href="js/shadowbox-3.0/shadowbox.css">
         <link rel="stylesheet" type="text/css" href="css/apps.css" />
+        <link rel="stylesheet" type="text/css" href="css/iphone.css"
+              media="only screen and (max-device-width: 480px)" />
         <link rel="stylesheet" type="text/css" wicket:id="style" />
         <!--[if lt IE 8]>
-            <script type="text/javascript">
+        <script type="text/javascript">
                 IE7_PNG_SUFFIX = ".png";
             </script>
-            <script type="text/javascript" src="http://ie7-js.googlecode.com/svn/version/2.0(beta3)/IE8.js"></script>
+        <script type="text/javascript" src="http://ie7-js.googlecode.com/svn/version/2.0(beta3)/IE8.js"></script>
         <![endif]-->
         <script type="text/javascript">
             // Shadowbox
@@ -53,8 +55,18 @@
 
             <div id="foot">
                 <!-- Credits -->
-                <b><wicket:message key="app.name">[App Name]</wicket:message></b> <wicket:message key="foot.by">[by]</wicket:message>
+                <b>
+                    <wicket:message key="app.name">[App Name]</wicket:message>
+                </b>
+                <wicket:message key="foot.by">[by]</wicket:message>
                 <a class="b" href="http://www.lhunath.com">Maarten Billemont</a>.
+            </div>
+
+            <div class="twitter">
+                <script type="text/javascript">
+                    tweetmeme_source = 'lhunath';
+                </script>
+                <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
             </div>
         </div>
     </body>

@@ -16,6 +16,11 @@ package com.lyndir.lhunath.apps.webapp;
  *   limitations under the License.
  */
 
+import com.lyndir.lhunath.apps.listener.AppsServletContextListener;
+import com.lyndir.lhunath.apps.webapp.error.AccessDeniedErrorPage;
+import com.lyndir.lhunath.apps.webapp.error.InternalErrorPage;
+import com.lyndir.lhunath.apps.webapp.error.PageExpiredErrorPage;
+import com.lyndir.lhunath.apps.webapp.page.LayoutPage;
 import org.apache.wicket.Page;
 import org.apache.wicket.Request;
 import org.apache.wicket.Response;
@@ -25,21 +30,15 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.target.coding.HybridUrlCodingStrategy;
 import org.apache.wicket.settings.IExceptionSettings;
 
-import com.lyndir.lhunath.apps.listener.AppsServletContextListener;
-import com.lyndir.lhunath.apps.webapp.error.AccessDeniedErrorPage;
-import com.lyndir.lhunath.apps.webapp.error.InternalErrorPage;
-import com.lyndir.lhunath.apps.webapp.error.PageExpiredErrorPage;
-import com.lyndir.lhunath.apps.webapp.page.LayoutPage;
-
 
 /**
  * <h2>{@link AppsWebApplication}<br>
  * <sub>Base {@link WebApplication} for applications.</sub></h2>
- * 
+ *
  * <p>
  * <i>May 31, 2009</i>
  * </p>
- * 
+ *
  * @author lhunath
  */
 public class AppsWebApplication extends WebApplication {
@@ -57,7 +56,7 @@ public class AppsWebApplication extends WebApplication {
         getExceptionSettings().setUnexpectedExceptionDisplay( IExceptionSettings.SHOW_INTERNAL_ERROR_PAGE );
 
         addComponentInstantiationListener( //
-        new InjectionFlagCachingGuiceComponentInjector( this, AppsServletContextListener.injector ) );
+                                           new InjectionFlagCachingGuiceComponentInjector( this, AppsServletContextListener.injector ) );
 
         mount( new HybridUrlCodingStrategy( "/about", LayoutPage.class ) );
     }

@@ -18,15 +18,15 @@ package com.lyndir.lhunath.apps.model;
 /**
  * <h2>{@link GitHubSourceProvider}<br>
  * <sub>[in short] (TODO).</sub></h2>
- * 
+ *
  * <p>
  * [description / usage].
  * </p>
- * 
+ *
  * <p>
  * <i>Feb 3, 2010</i>
  * </p>
- * 
+ *
  * @author lhunath
  */
 public class GitHubSourceProvider extends AbstractSourceProvider {
@@ -41,9 +41,8 @@ public class GitHubSourceProvider extends AbstractSourceProvider {
 
     /**
      * Create a new {@link GitHubSourceProvider} instance.
-     * 
-     * @param author
-     *            The GitHub username of the owner of the project.
+     *
+     * @param author The GitHub username of the owner of the project.
      */
     public GitHubSourceProvider(String author) {
 
@@ -52,11 +51,9 @@ public class GitHubSourceProvider extends AbstractSourceProvider {
 
     /**
      * Create a new {@link GitHubSourceProvider} instance.
-     * 
-     * @param author
-     *            The GitHub username of the owner of the project.
-     * @param project
-     *            The GitHub project for the application.
+     *
+     * @param author  The GitHub username of the owner of the project.
+     * @param project The GitHub project for the application.
      */
     public GitHubSourceProvider(String author, String project) {
 
@@ -70,8 +67,8 @@ public class GitHubSourceProvider extends AbstractSourceProvider {
     public String getHomepage() {
 
         return String.format( "http://wiki.github.com/%s/%s", //
-                author == null? app.getAuthor(): author, //
-                project == null? app.getFriendlyName(): project );
+                              author == null? app.getAuthor(): author, //
+                              project == null? app.getFriendlyName(): project );
     }
 
     /**
@@ -81,9 +78,9 @@ public class GitHubSourceProvider extends AbstractSourceProvider {
     public String findSnapshotLinkFor(AppVersion version) {
 
         return String.format( "http://github.com/%s/%s/zipball/%s", //
-                author == null? app.getAuthor(): author, //
-                project == null? app.getFriendlyName(): project, //
-                version.getInternalVersion() );
+                              author == null? app.getAuthor(): author, //
+                              project == null? app.getFriendlyName(): project, //
+                              version.getInternalVersion() );
     }
 
     /**
@@ -93,8 +90,8 @@ public class GitHubSourceProvider extends AbstractSourceProvider {
     public String findTreeLinkFor(AppVersion version) {
 
         return String.format( "http://github.com/%s/%s/tree/%s", //
-                author == null? app.getAuthor(): author, //
-                project == null? app.getFriendlyName(): project, //
-                version.getInternalVersion() );
+                              author == null? app.getAuthor(): author, //
+                              project == null? app.getFriendlyName(): project, //
+                              version.getInternalVersion() );
     }
 }

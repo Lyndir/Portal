@@ -18,31 +18,30 @@ package com.lyndir.lhunath.apps.model;
 /**
  * <h2>{@link Theme}<br>
  * <sub>[in short] (TODO).</sub></h2>
- * 
+ *
  * <p>
  * [description / usage].
  * </p>
- * 
+ *
  * <p>
  * <i>Feb 6, 2010</i>
  * </p>
- * 
+ *
  * @author lhunath
  */
 public enum Theme {
 
-    GRAY("gray"),
-    BLUE("blue"),
-    GREEN("green");
+    GRAY( "gray" ),
+    BLUE( "blue" ),
+    GREEN( "green" );
 
     private String internalName;
 
 
     /**
      * Create a new {@link Theme} instance.
-     * 
-     * @param internalName
-     *            The unique internal designation for the theme.
+     *
+     * @param internalName The unique internal designation for the theme.
      */
     private Theme(String internalName) {
 
@@ -50,8 +49,7 @@ public enum Theme {
     }
 
     /**
-     * @param internalName
-     *            The internalName of this {@link Theme}.
+     * @param internalName The internalName of this {@link Theme}.
      */
     public void setInternalName(String internalName) {
 

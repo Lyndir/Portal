@@ -23,15 +23,15 @@ import org.apache.wicket.protocol.http.WebSession;
 /**
  * <h2>{@link AppsSession}<br>
  * <sub>[in short] (TODO).</sub></h2>
- * 
+ *
  * <p>
  * [description / usage].
  * </p>
- * 
+ *
  * <p>
  * <i>Feb 9, 2010</i>
  * </p>
- * 
+ *
  * @author lhunath
  */
 public class AppsSession extends WebSession {
@@ -40,8 +40,7 @@ public class AppsSession extends WebSession {
 
 
     /**
-     * @param request
-     *            The request that initiates this session.
+     * @param request The request that initiates this session.
      */
     public AppsSession(Request request) {
 
@@ -62,8 +61,8 @@ public class AppsSession extends WebSession {
     }
 
     /**
-     * @param styleURL
-     *            The styleURL of this {@link AppsSession}.
+     * @param styleURL The styleURL of this {@link AppsSession}.
+     *
      * @return <code>this</code>
      */
     public AppsSession setStyleURL(String styleURL) {

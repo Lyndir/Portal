@@ -16,43 +16,36 @@
 package com.lyndir.lhunath.apps.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 
 
 /**
  * <h2>{@link AppVersion}<br>
  * <sub>[in short] (TODO).</sub></h2>
- * 
+ *
  * <p>
  * [description / usage].
  * </p>
- * 
+ *
  * <p>
  * <i>Jun 2, 2009</i>
  * </p>
- * 
+ *
  * @author lhunath
  */
 public class AppVersion implements Serializable, Comparable<AppVersion> {
 
     private static final SortedMap<String, AppVersion> versions = new TreeMap<String, AppVersion>();
 
-    private App                                        app;
-    private String                                     internalVersion;
-    private String                                     friendlyVersion;
-    private String                                     tagLine;
-    private String                                     description;
-    private List<String>                               dependencies;
-    private Date                                       completionDate;
-    private String                                     youTubeID;
-    private List<String>                               changes;
+    private App app;
+    private String internalVersion;
+    private String friendlyVersion;
+    private String tagLine;
+    private String description;
+    private List<Dependency> dependencies;
+    private Date completionDate;
+    private String youTubeID;
+    private List<String> changes;
 
 
     public static List<AppVersion> getAll() {
@@ -71,7 +64,7 @@ public class AppVersion implements Serializable, Comparable<AppVersion> {
     }
 
     public AppVersion(App app, String internalVersion, String friendlyVersion, String tagLine, String description,
-                      List<String> dependencies, Date completionDate, String youTubeID, String... changes) {
+                      List<Dependency> dependencies, Date completionDate, String youTubeID, String... changes) {
 
         this.app = app;
         this.internalVersion = internalVersion;
@@ -90,7 +83,7 @@ public class AppVersion implements Serializable, Comparable<AppVersion> {
     public String getScreenShotLink() {
 
         return String.format( "images/game/%s-%s.png", //
-                getApp().getInternalName(), getInternalVersion() );
+                              getApp().getInternalName(), getInternalVersion() );
     }
 
     /**
@@ -107,7 +100,7 @@ public class AppVersion implements Serializable, Comparable<AppVersion> {
     public String getYouTubeLink() {
 
         return String.format( "http://www.youtube.com/watch?v=%s", //
-                getYouTubeID() );
+                              getYouTubeID() );
     }
 
     /**
@@ -116,7 +109,7 @@ public class AppVersion implements Serializable, Comparable<AppVersion> {
     public String getYouTubePageTrackCode() {
 
         return String.format( "pageTracker._trackPageview('/movie/%s-%s.yt');", //
-                getApp().getInternalName(), getInternalVersion() );
+                              getApp().getInternalName(), getInternalVersion() );
     }
 
     /**
@@ -125,7 +118,7 @@ public class AppVersion implements Serializable, Comparable<AppVersion> {
     public String getFLVLink() {
 
         return String.format( "movies/%s-%s.flv", //
-                getApp().getInternalName(), getInternalVersion() );
+                              getApp().getInternalName(), getInternalVersion() );
     }
 
     /**
@@ -134,7 +127,7 @@ public class AppVersion implements Serializable, Comparable<AppVersion> {
     public String getFLVPageTrackCode() {
 
         return String.format( "pageTracker._trackPageview('/movie/%s-%s.flv');", //
-                getApp().getInternalName(), getInternalVersion() );
+                              getApp().getInternalName(), getInternalVersion() );
     }
 
     /**
@@ -143,7 +136,7 @@ public class AppVersion implements Serializable, Comparable<AppVersion> {
     public String getMP4Link() {
 
         return String.format( "movies/%s-%s.mp4", //
-                getApp().getInternalName(), getInternalVersion() );
+                              getApp().getInternalName(), getInternalVersion() );
     }
 
     /**
@@ -152,7 +145,7 @@ public class AppVersion implements Serializable, Comparable<AppVersion> {
     public String getMP4PageTrackCode() {
 
         return String.format( "pageTracker._trackPageview('/movie/%s-%s.mp4');", //
-                getApp().getInternalName(), getInternalVersion() );
+                              getApp().getInternalName(), getInternalVersion() );
     }
 
     /**
@@ -180,8 +173,7 @@ public class AppVersion implements Serializable, Comparable<AppVersion> {
     }
 
     /**
-     * @param tagLine
-     *            The tagLine of this {@link AppVersion}.
+     * @param tagLine The tagLine of this {@link AppVersion}.
      */
     public void setTagLine(String tagLine) {
 
@@ -197,8 +189,7 @@ public class AppVersion implements Serializable, Comparable<AppVersion> {
     }
 
     /**
-     * @param description
-     *            The description of this {@link AppVersion}.
+     * @param description The description of this {@link AppVersion}.
      */
     public void setDescription(String description) {
 
@@ -219,13 +210,13 @@ public class AppVersion implements Serializable, Comparable<AppVersion> {
     public String getAppStoreLink() {
 
         return String.format( "http://itunes.com/apps/%s/%s", //
-                getApp().getAuthor().toLowerCase(), getApp().getFriendlyName().toLowerCase() );
+                              getApp().getAuthor().toLowerCase(), getApp().getFriendlyName().toLowerCase() );
     }
 
     /**
      * @return A map that maps the names of the external dependencies of this version to their snapshot archives.
      */
-    public List<String> getDependencies() {
+    public List<Dependency> getDependencies() {
 
         return dependencies;
     }
@@ -265,9 +256,10 @@ public class AppVersion implements Serializable, Comparable<AppVersion> {
 
     /**
      * Sorts by {@link #getInternalVersion()}.
-     * 
+     *
      * {@inheritDoc}
      */
+    @Override
     public int compareTo(AppVersion o) {
 
         return getInternalVersion().compareTo( o.getInternalVersion() );

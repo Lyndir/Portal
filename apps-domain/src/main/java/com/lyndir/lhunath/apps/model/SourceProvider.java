@@ -21,17 +21,15 @@ import java.io.Serializable;
 /**
  * <h2>{@link SourceProvider}<br>
  * <sub>[in short] (TODO).</sub></h2>
- * 
+ *
  * <p>
  * [description / usage].
  * </p>
- * 
+ *
  * <p>
  * <i>Feb 3, 2010</i>
  * </p>
- * 
- * @param <A>
- *            The type of {@link App} that this provider will provide source information for.
+ *
  * @author lhunath
  */
 public interface SourceProvider extends Serializable {

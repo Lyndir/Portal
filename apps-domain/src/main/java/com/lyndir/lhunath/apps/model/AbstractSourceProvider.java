@@ -18,33 +18,29 @@ package com.lyndir.lhunath.apps.model;
 /**
  * <h2>{@link AbstractSourceProvider}<br>
  * <sub>[in short] (TODO).</sub></h2>
- * 
+ *
  * <p>
  * [description / usage].
  * </p>
- * 
+ *
  * <p>
  * <i>Feb 3, 2010</i>
  * </p>
- * 
- * @param <A>
- *            The type of {@link App} that this provider will provide source information for.
+ *
  * @author lhunath
  */
 public abstract class AbstractSourceProvider implements SourceProvider {
 
-    protected App    app;
+    protected App app;
     protected String author;
     protected String project;
 
 
     /**
      * Create a new {@link GitHubSourceProvider} instance.
-     * 
-     * @param author
-     *            The GitHub username of the owner of the project.
-     * @param project
-     *            The GitHub project for the application.
+     *
+     * @param author  The GitHub username of the owner of the project.
+     * @param project The GitHub project for the application.
      */
     protected AbstractSourceProvider(String author, String project) {
 
@@ -53,9 +49,9 @@ public abstract class AbstractSourceProvider implements SourceProvider {
     }
 
     /**
-     * @param app
-     *            The application of this {@link GitHubSourceProvider}.
+     * @param app The application of this {@link GitHubSourceProvider}.
      */
+    @Override
     public void setApp(App app) {
 
         this.app = app;
@@ -78,8 +74,7 @@ public abstract class AbstractSourceProvider implements SourceProvider {
     }
 
     /**
-     * @param author
-     *            The author of this {@link GitHubSourceProvider}.
+     * @param author The author of this {@link GitHubSourceProvider}.
      */
     public void setAuthor(String author) {
 
@@ -87,8 +82,7 @@ public abstract class AbstractSourceProvider implements SourceProvider {
     }
 
     /**
-     * @param project
-     *            The project of this {@link GitHubSourceProvider}.
+     * @param project The project of this {@link GitHubSourceProvider}.
      */
     public void setProject(String project) {
 

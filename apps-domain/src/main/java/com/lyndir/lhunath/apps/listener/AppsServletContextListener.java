@@ -17,36 +17,31 @@ package com.lyndir.lhunath.apps.listener;
 
 import java.util.Collection;
 
-import org.apache.wicket.Application;
-import org.apache.wicket.protocol.http.ContextParamWebApplicationFactory;
-import org.apache.wicket.protocol.http.WicketFilter;
-
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import com.google.inject.Module;
-import com.google.inject.Scopes;
-import com.google.inject.Stage;
+import com.google.inject.*;
 import com.google.inject.servlet.GuiceServletContextListener;
 import com.google.inject.servlet.ServletModule;
 import com.lyndir.lhunath.apps.webapp.AppsWebApplication;
+import org.apache.wicket.Application;
+import org.apache.wicket.protocol.http.ContextParamWebApplicationFactory;
+import org.apache.wicket.protocol.http.WicketFilter;
 
 
 /**
  * <h2>{@link AppsServletContextListener}<br>
  * <sub>[in short] (TODO).</sub></h2>
- * 
+ *
  * <p>
  * <i>Jan 11, 2010</i>
  * </p>
- * 
+ *
  * @author lhunath
  */
 public class AppsServletContextListener extends GuiceServletContextListener {
 
     private static final String PATH_WICKET = "/*";
-    public static Injector      injector;
+    public static Injector injector;
 
 
     /**
@@ -56,12 +51,12 @@ public class AppsServletContextListener extends GuiceServletContextListener {
     protected Injector getInjector() {
 
         return injector = Guice.createInjector( Stage.PRODUCTION, //
-                new ImmutableList.Builder<Module>().add( getWicketModule() ).addAll( getApplicationModules() ).build() );
+                                                new ImmutableList.Builder<Module>().add( getWicketModule() ).addAll( getApplicationModules() ).build() );
     }
 
     /**
      * Used to configure Wicket initialization.
-     * 
+     *
      * @return A {@link WicketServletModule}.
      */
     protected WicketServletModule getWicketModule() {
@@ -71,7 +66,7 @@ public class AppsServletContextListener extends GuiceServletContextListener {
 
     /**
      * Used to configure your application's Guice set-up.
-     * 
+     *
      * @return Some Guice {@link Module}s.
      */
     protected Collection<? extends Module> getApplicationModules() {
@@ -83,11 +78,11 @@ public class AppsServletContextListener extends GuiceServletContextListener {
     /**
      * <h2>{@link WicketServletModule}<br>
      * <sub>Basic servlet {@link Module} that adds Wicket to the servlet context.</sub></h2>
-     * 
+     *
      * <p>
      * <i>Feb 4, 2010</i>
      * </p>
-     * 
+     *
      * @author lhunath
      */
     protected static class WicketServletModule extends ServletModule {
@@ -107,15 +102,15 @@ public class AppsServletContextListener extends GuiceServletContextListener {
 
             // Tell Wicket what URL pattern it'll be bound on.
             paramBuilder.put( WicketFilter.FILTER_MAPPING_PARAM, //
-                    PATH_WICKET );
+                              PATH_WICKET );
             // Tell Wicket what URL pattern it'll be bound on.
             paramBuilder.put( WicketFilter.APP_FACT_PARAM, //
-                    ContextParamWebApplicationFactory.class.getCanonicalName() );
+                              ContextParamWebApplicationFactory.class.getCanonicalName() );
             // Wicket Application.
             paramBuilder.put( ContextParamWebApplicationFactory.APP_CLASS_PARAM, //
-                    application.getCanonicalName() );
+                              application.getCanonicalName() );
             paramBuilder.put( Application.CONFIGURATION, //
-                    Application.DEPLOYMENT );
+                              Application.DEPLOYMENT );
 
             // Bind the filter to the servlet context.
             filter( PATH_WICKET ).through( WicketFilter.class, paramBuilder.build() );

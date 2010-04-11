@@ -20,6 +20,8 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.lyndir.lhunath.apps.model.AppVersion;
+import com.lyndir.lhunath.apps.model.Dependency;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -27,28 +29,25 @@ import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 
-import com.lyndir.lhunath.apps.model.AppVersion;
-
 
 /**
  * <h2>{@link ArchivePanel}<br>
  * <sub>[in short] (TODO).</sub></h2>
- * 
+ *
  * <p>
  * [description / usage].
  * </p>
- * 
+ *
  * <p>
  * <i>May 31, 2009</i>
  * </p>
- * 
+ *
  * @author lhunath
  */
 public class ArchivePanel extends Panel {
 
     /**
-     * @param id
-     *            The Wicket ID of this panel.
+     * @param id The Wicket ID of this panel.
      */
     public ArchivePanel(String id) {
 
@@ -65,8 +64,8 @@ public class ArchivePanel extends Panel {
                 final AppVersion version = entryItem.getModelObject();
 
                 entryItem.add( new Label( "version", version.getFriendlyVersion() ) );
-                entryItem.add( new Label( "date", DateFormat.getDateInstance( DateFormat.LONG, getLocale() ).format(
-                        version.getCompletionDate() ) ) );
+                entryItem.add( new Label( "date", DateFormat.getDateInstance( DateFormat.LONG, getLocale() )
+                        .format( version.getCompletionDate() ) ) );
 
                 entryItem.add( new WebMarkupContainer( "screenshot" ) {
 
@@ -74,7 +73,7 @@ public class ArchivePanel extends Panel {
                     protected void onComponentTag(ComponentTag tag) {
 
                         tag.put( "src", //
-                                version.getScreenShotLink() );
+                                 version.getScreenShotLink() );
 
                         super.onComponentTag( tag );
                     }
@@ -85,9 +84,9 @@ public class ArchivePanel extends Panel {
                     protected void onComponentTag(ComponentTag tag) {
 
                         tag.put( "href", //
-                                version.getYouTubeLink() );
+                                 version.getYouTubeLink() );
                         tag.put( "onclick", //
-                                version.getYouTubePageTrackCode() );
+                                 version.getYouTubePageTrackCode() );
 
                         super.onComponentTag( tag );
                     }
@@ -104,9 +103,9 @@ public class ArchivePanel extends Panel {
                     protected void onComponentTag(ComponentTag tag) {
 
                         tag.put( "href", //
-                                version.getFLVLink() );
+                                 version.getFLVLink() );
                         tag.put( "onclick", //
-                                version.getFLVPageTrackCode() );
+                                 version.getFLVPageTrackCode() );
 
                         super.onComponentTag( tag );
                     }
@@ -123,9 +122,9 @@ public class ArchivePanel extends Panel {
                     protected void onComponentTag(ComponentTag tag) {
 
                         tag.put( "href", //
-                                version.getMP4Link() );
+                                 version.getMP4Link() );
                         tag.put( "onclick", //
-                                version.getMP4PageTrackCode() );
+                                 version.getMP4PageTrackCode() );
 
                         super.onComponentTag( tag );
                     }
@@ -169,12 +168,12 @@ public class ArchivePanel extends Panel {
                 } );
                 entryItem.add( source );
 
-                entryItem.add( new ListView<String>( "dependencies", version.getDependencies() ) {
+                entryItem.add( new ListView<Dependency>( "dependencies", version.getDependencies() ) {
 
                     @Override
-                    protected void populateItem(ListItem<String> item) {
+                    protected void populateItem(ListItem<Dependency> item) {
 
-                        final String dependencyName = item.getModelObject();
+                        final Dependency dependency = item.getModelObject();
 
                         WebMarkupContainer snapshotLink = new WebMarkupContainer( "snapshotLink" ) {
 
@@ -182,8 +181,8 @@ public class ArchivePanel extends Panel {
                             protected void onComponentTag(ComponentTag tag) {
 
                                 tag.put( "href", //
-                                        String.format( "http://github.com/lhunath/Cocos2D-iPhone/zipball/Gorillas-%s", //
-                                                version.getInternalVersion() ) );
+                                         String.format( "http://github.com/lhunath/Cocos2D-iPhone/zipball/Gorillas-%s", //
+                                                        version.getInternalVersion() ) );
 
                                 super.onComponentTag( tag );
                             }
@@ -194,14 +193,14 @@ public class ArchivePanel extends Panel {
                             protected void onComponentTag(ComponentTag tag) {
 
                                 tag.put( "href", //
-                                        String.format( "http://github.com/lhunath/Cocos2D-iPhone/tree/Gorillas-%s", //
-                                                version.getInternalVersion() ) );
+                                         String.format( "http://github.com/lhunath/Cocos2D-iPhone/tree/Gorillas-%s", //
+                                                        version.getInternalVersion() ) );
 
                                 super.onComponentTag( tag );
                             }
                         };
 
-                        item.add( new Label( "name", dependencyName ) );
+                        item.add( new Label( "name", dependency.getName() ) );
                         item.add( snapshotLink );
                         item.add( githubLink );
                     }

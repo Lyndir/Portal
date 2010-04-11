@@ -21,39 +21,34 @@ import java.io.Serializable;
 /**
  * <h2>{@link App}<br>
  * <sub>[in short] (TODO).</sub></h2>
- * 
+ *
  * <p>
  * [description / usage].
  * </p>
- * 
+ *
  * <p>
  * <i>Feb 3, 2010</i>
  * </p>
- * 
+ *
  * @author lhunath
  */
 public class App implements Serializable {
 
-    private String         author;
-    private String         friendlyName;
-    private String         internalName;
+    private String author;
+    private String friendlyName;
+    private String internalName;
     private SourceProvider sourceProvider;
-    private String         googleAnalyticsID;
+    private String googleAnalyticsID;
 
 
     /**
      * Create a new {@link App} instance.
-     * 
-     * @param author
-     *            The name of the owner/author of the application.
-     * @param friendlyName
-     *            The name of this application as it will appear in the user interface.
-     * @param internalName
-     *            The name of this application for use in internal references.
-     * @param sourceProvider
-     *            The instance that will provide the location of the source code for this application.
-     * @param googleAnalyticsID
-     *            The web property ID of the Google Analytics profile under which user page access should be tracked.
+     *
+     * @param author            The name of the owner/author of the application.
+     * @param friendlyName      The name of this application as it will appear in the user interface.
+     * @param internalName      The name of this application for use in internal references.
+     * @param sourceProvider    The instance that will provide the location of the source code for this application.
+     * @param googleAnalyticsID The web property ID of the Google Analytics profile under which user page access should be tracked.
      */
     public App(String author, String friendlyName, String internalName, SourceProvider sourceProvider,
                String googleAnalyticsID) {
@@ -67,8 +62,7 @@ public class App implements Serializable {
     }
 
     /**
-     * @param author
-     *            The author of this {@link App}.
+     * @param author The author of this {@link App}.
      */
     public void setAuthor(String author) {
 
@@ -84,8 +78,7 @@ public class App implements Serializable {
     }
 
     /**
-     * @param friendlyName
-     *            The friendlyName of this {@link App}.
+     * @param friendlyName The friendlyName of this {@link App}.
      */
     public void setFriendlyName(String friendlyName) {
 
@@ -101,8 +94,7 @@ public class App implements Serializable {
     }
 
     /**
-     * @param internalName
-     *            The internalName of this {@link App}.
+     * @param internalName The internalName of this {@link App}.
      */
     public void setInternalName(String internalName) {
 
@@ -118,8 +110,7 @@ public class App implements Serializable {
     }
 
     /**
-     * @param sourceProvider
-     *            The sourceProvider of this {@link App}.
+     * @param sourceProvider The sourceProvider of this {@link App}.
      */
     public void setSourceProvider(SourceProvider sourceProvider) {
 
@@ -135,8 +126,7 @@ public class App implements Serializable {
     }
 
     /**
-     * @param googleAnalyticsID
-     *            The googleAnalyticsID of this {@link App}.
+     * @param googleAnalyticsID The googleAnalyticsID of this {@link App}.
      */
     public void setGoogleAnalyticsID(String googleAnalyticsID) {
 

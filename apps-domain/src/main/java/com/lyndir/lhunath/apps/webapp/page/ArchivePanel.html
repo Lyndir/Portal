@@ -6,47 +6,77 @@
         <wicket:panel>
 
             <div class="text">
-                <wicket:message key="info">[Welcome to the versions archive.  Here you'll find an overview of the current and past versions and access to their source code.]</wicket:message>
+                <wicket:message key="info">[Welcome to the versions archive. Here you'll find an overview of the current
+                                           and past versions and access to their source code.]
+                </wicket:message>
             </div>
 
             <div class="text entry" wicket:id="entries">
                 <img alt="Screenshot" wicket:id="screenshot" />
+
                 <h2>
-                    <wicket:message key="app.name">[App Name]</wicket:message> <span wicket:id="version">[1.0]</span>
+                    <wicket:message key="app.name">[App Name]</wicket:message>
+                    <span wicket:id="version">[1.0]</span>
                     <sup wicket:id="date">[Jan 1th, 2000]</sup>
                 </h2>
 
                 <wicket:enclosure child="youtube">
-                    <h3><wicket:message key="video">[Video]</wicket:message></h3>
+                    <h3>
+                        <wicket:message key="video">[Video]</wicket:message>
+                    </h3>
                     <ul>
-                        <li><a wicket:id="youtube">[<wicket:message key="video.youtube">[YouTube]</wicket:message>]</a></li>
-                        <li><a wicket:id="flash" rel="shadowbox;width=480;height=320">[<wicket:message key="video.flash">[Flash]</wicket:message>]</a></li>
-                        <li><a wicket:id="mpeg">[<wicket:message key="video.mpeg4">[MPEG-4]</wicket:message>]</a></li>
+                        <li><a wicket:id="youtube">[
+                            <wicket:message key="video.youtube">[YouTube]</wicket:message>
+                                                   ]</a></li>
+                        <li><a wicket:id="flash" rel="shadowbox;width=480;height=320">[
+                            <wicket:message key="video.flash">[Flash]</wicket:message>
+                                                                                      ]</a></li>
+                        <li><a wicket:id="mpeg">[
+                            <wicket:message key="video.mpeg4">[MPEG-4]</wicket:message>
+                                                ]</a></li>
                     </ul>
                 </wicket:enclosure>
 
-                <h3><wicket:message key="changes">[Changes since last version]</wicket:message></h3>
+                <h3>
+                    <wicket:message key="changes">[Changes since last version]</wicket:message>
+                </h3>
                 <ul>
                     <li wicket:id="changes"><span wicket:id="description">[Fixed foo to be bar]</span></li>
                 </ul>
 
-                <h5 class="floatstop"><wicket:message key="source">[Source Code]</wicket:message></h5>
+                <h5 class="floatstop">
+                    <wicket:message key="source">[Source Code]</wicket:message>
+                </h5>
                 <ul class="buttons" wicket:id="source">
-                    <li><div class="button">
-                        <wicket:message key="app.name">[App Name]</wicket:message>
-                        <a wicket:id="snapshotLink">[<wicket:message key="zip">[zip]</wicket:message>]</a>
-                        <a wicket:id="treeLink">[<wicket:message key="tree">[tree]</wicket:message>]</a>
-                    </div></li>
+                    <li>
+                        <div class="button">
+                            <wicket:message key="app.name">[App Name]</wicket:message>
+                            <a wicket:id="snapshotLink">[
+                                <wicket:message key="zip">[zip]</wicket:message>
+                                                        ]</a>
+                            <a wicket:id="treeLink">[
+                                <wicket:message key="tree">[tree]</wicket:message>
+                                                    ]</a>
+                        </div>
+                    </li>
                 </ul>
 
                 <wicket:enclosure child="dependencies">
-                    <h5 class="floatstop"><wicket:message key="dependencies">[Dependencies]</wicket:message></h5>
+                    <h5 class="floatstop">
+                        <wicket:message key="dependencies">[Dependencies]</wicket:message>
+                    </h5>
                     <ul class="buttons" wicket:id="dependencies">
-                        <li><div class="button">
-                            <span wicket:id="name">[Cocos2D-iPhone]</span>
-                            <a wicket:id="snapshotLink">[<wicket:message key="zip">[zip]</wicket:message>]</a>
-                            <a wicket:id="treeLink">[<wicket:message key="tree">[tree]</wicket:message>]</a>
-                        </div></li>
+                        <li>
+                            <div class="button">
+                                <span wicket:id="name">[Cocos2D-iPhone]</span>
+                                <a wicket:id="snapshotLink">[
+                                    <wicket:message key="zip">[zip]</wicket:message>
+                                                            ]</a>
+                                <a wicket:id="treeLink">[
+                                    <wicket:message key="tree">[tree]</wicket:message>
+                                                        ]</a>
+                            </div>
+                        </li>
                     </ul>
                 </wicket:enclosure>
 

@@ -15,23 +15,22 @@
  */
 package com.lyndir.lhunath.apps.webapp.page;
 
-import org.apache.wicket.markup.html.panel.Panel;
-
 import com.lyndir.lhunath.apps.model.AppVersion;
+import org.apache.wicket.markup.html.panel.Panel;
 
 
 /**
  * <h2>{@link DevelopmentPage}<br>
  * <sub>[in short] (TODO).</sub></h2>
- * 
+ *
  * <p>
  * [description / usage].
  * </p>
- * 
+ *
  * <p>
  * <i>May 31, 2009</i>
  * </p>
- * 
+ *
  * @author lhunath
  */
 public class DevelopmentPage extends MessagePage {
@@ -52,8 +51,7 @@ public class DevelopmentPage extends MessagePage {
     class DevelopmentPanel extends Panel {
 
         /**
-         * @param id
-         *            The Wicket ID of this panel.
+         * @param id The Wicket ID of this panel.
          */
         public DevelopmentPanel(String id) {
 
