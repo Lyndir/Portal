@@ -61,7 +61,7 @@ public class ArchivePanel extends Panel {
             @Override
             protected void populateItem(ListItem<AppVersion> entryItem) {
 
-                final AppVersion version = entryItem.getModelObject();
+                AppVersion version = entryItem.getModelObject();
 
                 entryItem.add( new Label( "version", version.getFriendlyVersion() ) );
                 entryItem.add( new Label( "date", DateFormat.getDateInstance( DateFormat.LONG, getLocale() )
@@ -173,7 +173,7 @@ public class ArchivePanel extends Panel {
                     @Override
                     protected void populateItem(ListItem<Dependency> item) {
 
-                        final Dependency dependency = item.getModelObject();
+                        Dependency dependency = item.getModelObject();
 
                         WebMarkupContainer snapshotLink = new WebMarkupContainer( "snapshotLink" ) {
 
@@ -181,7 +181,8 @@ public class ArchivePanel extends Panel {
                             protected void onComponentTag(ComponentTag tag) {
 
                                 tag.put( "href", //
-                                         String.format( "http://github.com/lhunath/Cocos2D-iPhone/zipball/Gorillas-%s", //
+                                         String.format( "http://github.com/lhunath/Cocos2D-iPhone/zipball/Gorillas-%s",
+                                                        //
                                                         version.getInternalVersion() ) );
 
                                 super.onComponentTag( tag );

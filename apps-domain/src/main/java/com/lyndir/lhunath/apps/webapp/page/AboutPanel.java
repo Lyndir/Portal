@@ -50,7 +50,7 @@ public class AboutPanel extends Panel {
             @Override
             protected void populateItem(ListItem<AppVersion> versionItem) {
 
-                final AppVersion version = versionItem.getModelObject();
+                AppVersion version = versionItem.getModelObject();
 
                 versionItem.add( new Label( "version", version.getFriendlyVersion() ) );
                 versionItem.add( new ListView<String>( "changes", version.getChanges() ) {

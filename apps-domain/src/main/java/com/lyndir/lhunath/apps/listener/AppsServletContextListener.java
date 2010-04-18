@@ -51,7 +51,9 @@ public class AppsServletContextListener extends GuiceServletContextListener {
     protected Injector getInjector() {
 
         return injector = Guice.createInjector( Stage.PRODUCTION, //
-                                                new ImmutableList.Builder<Module>().add( getWicketModule() ).addAll( getApplicationModules() ).build() );
+                                                new ImmutableList.Builder<Module>().add( getWicketModule() )
+                                                        .addAll( getApplicationModules() )
+                                                        .build() );
     }
 
     /**

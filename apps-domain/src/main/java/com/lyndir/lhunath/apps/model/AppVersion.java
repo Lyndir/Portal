@@ -63,8 +63,9 @@ public class AppVersion implements Serializable, Comparable<AppVersion> {
         versions.put( version.getInternalVersion(), version );
     }
 
-    public AppVersion(App app, String internalVersion, String friendlyVersion, String tagLine, String description,
-                      List<Dependency> dependencies, Date completionDate, String youTubeID, String... changes) {
+    public AppVersion(
+            App app, String internalVersion, String friendlyVersion, String tagLine, String description,
+            List<Dependency> dependencies, Date completionDate, String youTubeID, String... changes) {
 
         this.app = app;
         this.internalVersion = internalVersion;

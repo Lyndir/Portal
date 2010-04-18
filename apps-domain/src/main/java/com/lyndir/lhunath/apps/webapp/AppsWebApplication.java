@@ -56,7 +56,8 @@ public class AppsWebApplication extends WebApplication {
         getExceptionSettings().setUnexpectedExceptionDisplay( IExceptionSettings.SHOW_INTERNAL_ERROR_PAGE );
 
         addComponentInstantiationListener( //
-                                           new InjectionFlagCachingGuiceComponentInjector( this, AppsServletContextListener.injector ) );
+                                           new InjectionFlagCachingGuiceComponentInjector( this,
+                                                                                           AppsServletContextListener.injector ) );
 
         mount( new HybridUrlCodingStrategy( "/about", LayoutPage.class ) );
     }

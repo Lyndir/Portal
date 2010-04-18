@@ -128,7 +128,7 @@ public class LayoutPage extends WebPage {
             @Override
             protected void populateItem(ListItem<ITab> item) {
 
-                final ITab headTab = item.getModelObject();
+                ITab headTab = item.getModelObject();
 
                 Link<String> link = new AjaxFallbackLink<String>( "link" ) {
 
@@ -149,8 +149,9 @@ public class LayoutPage extends WebPage {
                                                  AppVersion.getLatest().getApp().getGoogleAnalyticsID() );
                         trackPanelVariables.put( "pageView", //
                                                  contentPanel.getClass().getSimpleName() );
-                        final String trackPanelJs = new JavaScriptTemplate( new PackagedTextTemplate( LayoutPage.class,
-                                                                                                      "trackPage.js" ) ).asString( trackPanelVariables );
+                        String trackPanelJs = new JavaScriptTemplate( new PackagedTextTemplate( LayoutPage.class,
+                                                                                                "trackPage.js" ) )
+                                .asString( trackPanelVariables );
 
                         LayoutPage.this.addOrReplace( contentPanel );
 
@@ -166,7 +167,7 @@ public class LayoutPage extends WebPage {
 
                         } else {
                             // No AJAX Support
-                            final String jsTemplate = panelJs;
+                            String jsTemplate = panelJs;
 
                             add( new StringHeaderContributor( new JavaScriptTemplate( new TextTemplate() {
 
@@ -226,13 +227,14 @@ public class LayoutPage extends WebPage {
         trackPageVariables.put( "pageView", //
                                 contentPanel.getClass().getSimpleName() );
         add( new StringHeaderContributor( new JavaScriptTemplate( new PackagedTextTemplate( LayoutPage.class,
-                                                                                            "trackPage.js" ) ).asString( trackPageVariables ) ) );
+                                                                                            "trackPage.js" ) ).asString(
+                trackPageVariables ) ) );
 
         // OnShowJavaScript
         String js = null;
         if (contentPanel instanceof JavaScriptProvider)
             js = ((JavaScriptProvider) contentPanel).getProvidedJavaScript();
-        final String jsTemplate = js;
+        String jsTemplate = js;
         add( new StringHeaderContributor( new JavaScriptTemplate( new TextTemplate() {
 
             @Override

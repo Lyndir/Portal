@@ -50,8 +50,9 @@ public class App implements Serializable {
      * @param sourceProvider    The instance that will provide the location of the source code for this application.
      * @param googleAnalyticsID The web property ID of the Google Analytics profile under which user page access should be tracked.
      */
-    public App(String author, String friendlyName, String internalName, SourceProvider sourceProvider,
-               String googleAnalyticsID) {
+    public App(
+            String author, String friendlyName, String internalName, SourceProvider sourceProvider,
+            String googleAnalyticsID) {
 
         setAuthor( author );
         setFriendlyName( friendlyName );

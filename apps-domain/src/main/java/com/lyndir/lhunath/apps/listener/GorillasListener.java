@@ -51,9 +51,12 @@ public class GorillasListener implements ServletContextListener {
         App gorillas = new App( "lhunath", "Gorillas", "gorillas", new GitHubSourceProvider(), "UA-90535-5" );
         AppVersion.register( new AppVersion( gorillas, "100", "1.0", null, null, //
                                              ImmutableList.of( //
-                                                               new Dependency( "Cocos2D-iPhone", "http://github.com/lhunath/Cocos2D-iPhone/tree/Gorillas-100",
-                                                                               "http://github.com/lhunath/Cocos2D-iPhone/tarball/Gorillas-100" ) ), //
-                                             new Date( 1231931604 * 1000L ), "Hu4Y8eJLqkI", "Eye candy worthy of your iPhone / iPod touch", //
+                                                               new Dependency( "Cocos2D-iPhone",
+                                                                               "http://github.com/lhunath/Cocos2D-iPhone/tree/Gorillas-100",
+                                                                               "http://github.com/lhunath/Cocos2D-iPhone/tarball/Gorillas-100" ) ),
+                                             //
+                                             new Date( 1231931604 * 1000L ), "Hu4Y8eJLqkI",
+                                             "Eye candy worthy of your iPhone / iPod touch", //
                                              "Wind and weather effects, such as rain and snow", //
                                              "A range of excellent retro remixes", //
                                              "Challenge the AI or a friend", //
@@ -63,9 +66,13 @@ public class GorillasListener implements ServletContextListener {
         ) );
 
         AppVersion.register( new AppVersion( gorillas, "110", "1.1", null, null, ImmutableList.of( //
-                                                                                                   new Dependency( "Cocos2D-iPhone", "http://github.com/lhunath/Cocos2D-iPhone/tree/Gorillas-110",
-                                                                                                                   "http://github.com/lhunath/Cocos2D-iPhone/tarball/Gorillas-110" ) ), //
-                                             new Date( 1236986395 * 1000L ), "kOd6fI2Cm7c", "Sound effects, vibration and shaking", //
+                                                                                                   new Dependency(
+                                                                                                           "Cocos2D-iPhone",
+                                                                                                           "http://github.com/lhunath/Cocos2D-iPhone/tree/Gorillas-110",
+                                                                                                           "http://github.com/lhunath/Cocos2D-iPhone/tarball/Gorillas-110" ) ),
+                                             //
+                                             new Date( 1236986395 * 1000L ), "kOd6fI2Cm7c",
+                                             "Sound effects, vibration and shaking", //
                                              "Game modes: Dynamic, Team Game & Last Man Standing", //
                                              "Camera action and game field zooming", //
                                              "Many gorillas together in the game", //
@@ -74,15 +81,23 @@ public class GorillasListener implements ServletContextListener {
         ) );
 
         AppVersion.register( new AppVersion( gorillas, "122", "1.2", null, null, ImmutableList.of( //
-                                                                                                   new Dependency( "Cocos2D-iPhone", "http://github.com/lhunath/Cocos2D-iPhone/tree/Gorillas-122",
-                                                                                                                   "http://github.com/lhunath/Cocos2D-iPhone/tarball/Gorillas-122" ) ), //
-                                             new Date( 1240302082 * 1000L ), "kOd6fI2Cm7c", "Holiday themed player models" //
+                                                                                                   new Dependency(
+                                                                                                           "Cocos2D-iPhone",
+                                                                                                           "http://github.com/lhunath/Cocos2D-iPhone/tree/Gorillas-122",
+                                                                                                           "http://github.com/lhunath/Cocos2D-iPhone/tarball/Gorillas-122" ) ),
+                                             //
+                                             new Date( 1240302082 * 1000L ), "kOd6fI2Cm7c",
+                                             "Holiday themed player models" //
         ) );
 
         AppVersion.register( new AppVersion( gorillas, "131", "1.3", null, null, ImmutableList.of( //
-                                                                                                   new Dependency( "Cocos2D-iPhone", "http://github.com/lhunath/Cocos2D-iPhone/tree/Gorillas-131",
-                                                                                                                   "http://github.com/lhunath/Cocos2D-iPhone/tarball/Gorillas-131" ) ), //
-                                             new Date( 1247060791 * 1000L ), "Q-s8bimr1GY", "Show metrics while aiming", //
+                                                                                                   new Dependency(
+                                                                                                           "Cocos2D-iPhone",
+                                                                                                           "http://github.com/lhunath/Cocos2D-iPhone/tree/Gorillas-131",
+                                                                                                           "http://github.com/lhunath/Cocos2D-iPhone/tarball/Gorillas-131" ) ),
+                                             //
+                                             new Date( 1247060791 * 1000L ), "Q-s8bimr1GY", "Show metrics while aiming",
+                                             //
                                              "Added another player model", //
                                              "Voice effects and new (higher quality) audio tracks", //
                                              "Localized (currently English, Dutch and Arabic)", //
