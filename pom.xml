@@ -12,7 +12,7 @@
 
     <groupId>com.lyndir.lhunath.apps</groupId>
     <artifactId>apps</artifactId>
-    <version>1.0</version>
+    <version>SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Apps Group</name>
