@@ -16,7 +16,6 @@
 package com.lyndir.lhunath.apps.webapp.page;
 
 import java.text.MessageFormat;
-
 import org.apache.wicket.RedirectToUrlException;
 import org.apache.wicket.behavior.HeaderContributor;
 import org.apache.wicket.behavior.StringHeaderContributor;
@@ -25,16 +24,11 @@ import org.apache.wicket.markup.html.panel.Panel;
 
 
 /**
- * <h2>{@link MessagePage}<br>
- * <sub>Abstract page class for unexpected application errors.</sub></h2>
+ * <h2>{@link MessagePage}<br> <sub>Abstract page class for unexpected application errors.</sub></h2>
  *
- * <p>
- * This page just shows an error message and redirects back to the homepage after five seconds.
- * </p>
+ * <p> This page just shows an error message and redirects back to the homepage after five seconds. </p>
  *
- * <p>
- * <i>Jun 10, 2009</i>
- * </p>
+ * <p> <i>Jun 10, 2009</i> </p>
  *
  * @author lhunath
  */

@@ -21,23 +21,17 @@ import org.apache.wicket.protocol.http.WebSession;
 
 
 /**
- * <h2>{@link AppsSession}<br>
- * <sub>[in short] (TODO).</sub></h2>
+ * <h2>{@link AppsSession}<br> <sub>[in short] (TODO).</sub></h2>
  *
- * <p>
- * [description / usage].
- * </p>
+ * <p> [description / usage]. </p>
  *
- * <p>
- * <i>Feb 9, 2010</i>
- * </p>
+ * <p> <i>Feb 9, 2010</i> </p>
  *
  * @author lhunath
  */
 public class AppsSession extends WebSession {
 
     String styleURL;
-
 
     /**
      * @param request The request that initiates this session.

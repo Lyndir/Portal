@@ -15,34 +15,29 @@
  */
 package com.lyndir.lhunath.apps.listener;
 
-import java.util.Collection;
-
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.inject.*;
 import com.google.inject.servlet.GuiceServletContextListener;
 import com.google.inject.servlet.ServletModule;
 import com.lyndir.lhunath.apps.webapp.AppsWebApplication;
+import java.util.Collection;
 import org.apache.wicket.Application;
 import org.apache.wicket.protocol.http.ContextParamWebApplicationFactory;
 import org.apache.wicket.protocol.http.WicketFilter;
 
 
 /**
- * <h2>{@link AppsServletContextListener}<br>
- * <sub>[in short] (TODO).</sub></h2>
+ * <h2>{@link AppsListener}<br> <sub>[in short] (TODO).</sub></h2>
  *
- * <p>
- * <i>Jan 11, 2010</i>
- * </p>
+ * <p> <i>Jan 11, 2010</i> </p>
  *
  * @author lhunath
  */
-public class AppsServletContextListener extends GuiceServletContextListener {
+public class AppsListener extends GuiceServletContextListener {
 
     private static final String PATH_WICKET = "/*";
     public static Injector injector;
-
 
     /**
      * {@inheritDoc}
@@ -52,8 +47,7 @@ public class AppsServletContextListener extends GuiceServletContextListener {
 
         return injector = Guice.createInjector( Stage.PRODUCTION, //
                                                 new ImmutableList.Builder<Module>().add( getWicketModule() )
-                                                        .addAll( getApplicationModules() )
-                                                        .build() );
+                                                        .addAll( getApplicationModules() ).build() );
     }
 
     /**
@@ -76,21 +70,16 @@ public class AppsServletContextListener extends GuiceServletContextListener {
         return ImmutableList.of();
     }
 
-
     /**
-     * <h2>{@link WicketServletModule}<br>
-     * <sub>Basic servlet {@link Module} that adds Wicket to the servlet context.</sub></h2>
+     * <h2>{@link WicketServletModule}<br> <sub>Basic servlet {@link Module} that adds Wicket to the servlet context.</sub></h2>
      *
-     * <p>
-     * <i>Feb 4, 2010</i>
-     * </p>
+     * <p> <i>Feb 4, 2010</i> </p>
      *
      * @author lhunath
      */
     protected static class WicketServletModule extends ServletModule {
 
         private Class<? extends AppsWebApplication> application;
-
 
         public WicketServletModule(Class<? extends AppsWebApplication> application) {
 

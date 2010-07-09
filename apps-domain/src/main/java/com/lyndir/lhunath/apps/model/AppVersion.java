@@ -20,16 +20,11 @@ import java.util.*;
 
 
 /**
- * <h2>{@link AppVersion}<br>
- * <sub>[in short] (TODO).</sub></h2>
+ * <h2>{@link AppVersion}<br> <sub>[in short] (TODO).</sub></h2>
  *
- * <p>
- * [description / usage].
- * </p>
+ * <p> [description / usage]. </p>
  *
- * <p>
- * <i>Jun 2, 2009</i>
- * </p>
+ * <p> <i>Jun 2, 2009</i> </p>
  *
  * @author lhunath
  */
@@ -47,7 +42,6 @@ public class AppVersion implements Serializable, Comparable<AppVersion> {
     private String youTubeID;
     private List<String> changes;
 
-
     public static List<AppVersion> getAll() {
 
         return Collections.unmodifiableList( new ArrayList<AppVersion>( versions.values() ) );
@@ -63,9 +57,8 @@ public class AppVersion implements Serializable, Comparable<AppVersion> {
         versions.put( version.getInternalVersion(), version );
     }
 
-    public AppVersion(
-            App app, String internalVersion, String friendlyVersion, String tagLine, String description,
-            List<Dependency> dependencies, Date completionDate, String youTubeID, String... changes) {
+    public AppVersion(App app, String internalVersion, String friendlyVersion, String tagLine, String description,
+                      List<Dependency> dependencies, Date completionDate, String youTubeID, String... changes) {
 
         this.app = app;
         this.internalVersion = internalVersion;

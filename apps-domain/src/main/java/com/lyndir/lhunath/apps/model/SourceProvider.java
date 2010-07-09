@@ -19,16 +19,11 @@ import java.io.Serializable;
 
 
 /**
- * <h2>{@link SourceProvider}<br>
- * <sub>[in short] (TODO).</sub></h2>
+ * <h2>{@link SourceProvider}<br> <sub>Providers of project development locations.</sub></h2>
  *
- * <p>
- * [description / usage].
- * </p>
+ * <p> [description / usage]. </p>
  *
- * <p>
- * <i>Feb 3, 2010</i>
- * </p>
+ * <p> <i>Feb 3, 2010</i> </p>
  *
  * @author lhunath
  */

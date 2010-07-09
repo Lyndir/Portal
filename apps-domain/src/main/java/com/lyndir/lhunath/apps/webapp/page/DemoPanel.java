@@ -15,11 +15,10 @@
  */
 package com.lyndir.lhunath.apps.webapp.page;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.lyndir.lhunath.apps.model.AppVersion;
 import com.lyndir.lhunath.apps.webapp.JavaScriptProvider;
+import java.util.HashMap;
+import java.util.Map;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -29,12 +28,9 @@ import org.apache.wicket.util.template.PackagedTextTemplate;
 
 
 /**
- * <h2>{@link DemoPanel}<br>
- * <sub>The interface panel that shows a video demonstration of the game.</sub></h2>
+ * <h2>{@link DemoPanel}<br> <sub>The interface panel that shows a video demonstration of the game.</sub></h2>
  *
- * <p>
- * <i>May 31, 2009</i>
- * </p>
+ * <p> <i>May 31, 2009</i> </p>
  *
  * @author lhunath
  */
@@ -42,7 +38,6 @@ public class DemoPanel extends Panel implements JavaScriptProvider {
 
     private static final String JS_KEY_MOVIE_LINK = "movieLink";
     private static final String JS_KEY_PAGETRACK_CODE = "pageTrackCode";
-
 
     /**
      * @param id The Wicket ID of this panel.

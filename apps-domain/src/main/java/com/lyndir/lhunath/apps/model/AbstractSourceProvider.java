@@ -16,16 +16,11 @@
 package com.lyndir.lhunath.apps.model;
 
 /**
- * <h2>{@link AbstractSourceProvider}<br>
- * <sub>[in short] (TODO).</sub></h2>
+ * <h2>{@link AbstractSourceProvider}<br> <sub>Basic source provider implementation.</sub></h2>
  *
- * <p>
- * [description / usage].
- * </p>
+ * <p> Convenience implementation which provides author, project and app data. </p>
  *
- * <p>
- * <i>Feb 3, 2010</i>
- * </p>
+ * <p> <i>Feb 3, 2010</i> </p>
  *
  * @author lhunath
  */
@@ -34,7 +29,6 @@ public abstract class AbstractSourceProvider implements SourceProvider {
     protected App app;
     protected String author;
     protected String project;
-
 
     /**
      * Create a new {@link GitHubSourceProvider} instance.

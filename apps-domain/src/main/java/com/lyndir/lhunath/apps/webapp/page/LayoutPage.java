@@ -1,13 +1,12 @@
 package com.lyndir.lhunath.apps.webapp.page;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.google.common.collect.ImmutableList;
 import com.lyndir.lhunath.apps.model.AppVersion;
 import com.lyndir.lhunath.apps.webapp.AppsSession;
 import com.lyndir.lhunath.apps.webapp.JavaScriptProvider;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.apache.wicket.RestartResponseException;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxFallbackLink;
@@ -36,7 +35,6 @@ public class LayoutPage extends WebPage {
     private static final long serialVersionUID = 1L;
 
     List<ITab> headTabsList;
-
 
     List<ITab> getTabs() {
 
@@ -90,11 +88,9 @@ public class LayoutPage extends WebPage {
         return tabListBuilder.build();
     }
 
-
     int selectedTabIndex;
     HeaderContributor selectedTheme;
     WebMarkupContainer headTabsContainer;
-
 
     /**
      * Create a new LayoutPage.
@@ -128,7 +124,7 @@ public class LayoutPage extends WebPage {
             @Override
             protected void populateItem(ListItem<ITab> item) {
 
-                ITab headTab = item.getModelObject();
+                final ITab headTab = item.getModelObject();
 
                 Link<String> link = new AjaxFallbackLink<String>( "link" ) {
 
@@ -149,9 +145,8 @@ public class LayoutPage extends WebPage {
                                                  AppVersion.getLatest().getApp().getGoogleAnalyticsID() );
                         trackPanelVariables.put( "pageView", //
                                                  contentPanel.getClass().getSimpleName() );
-                        String trackPanelJs = new JavaScriptTemplate( new PackagedTextTemplate( LayoutPage.class,
-                                                                                                "trackPage.js" ) )
-                                .asString( trackPanelVariables );
+                        final String trackPanelJs = new JavaScriptTemplate(
+                                new PackagedTextTemplate( LayoutPage.class, "trackPage.js" ) ).asString( trackPanelVariables );
 
                         LayoutPage.this.addOrReplace( contentPanel );
 
@@ -164,10 +159,9 @@ public class LayoutPage extends WebPage {
                                 target.appendJavascript( panelJs );
                             target.appendJavascript( "Shadowbox.setup();" );
                             target.appendJavascript( trackPanelJs );
-
                         } else {
                             // No AJAX Support
-                            String jsTemplate = panelJs;
+                            final String jsTemplate = panelJs;
 
                             add( new StringHeaderContributor( new JavaScriptTemplate( new TextTemplate() {
 
@@ -226,15 +220,14 @@ public class LayoutPage extends WebPage {
                                 AppVersion.getLatest().getApp().getGoogleAnalyticsID() );
         trackPageVariables.put( "pageView", //
                                 contentPanel.getClass().getSimpleName() );
-        add( new StringHeaderContributor( new JavaScriptTemplate( new PackagedTextTemplate( LayoutPage.class,
-                                                                                            "trackPage.js" ) ).asString(
-                trackPageVariables ) ) );
+        add( new StringHeaderContributor(
+                new JavaScriptTemplate( new PackagedTextTemplate( LayoutPage.class, "trackPage.js" ) ).asString( trackPageVariables ) ) );
 
         // OnShowJavaScript
         String js = null;
         if (contentPanel instanceof JavaScriptProvider)
             js = ((JavaScriptProvider) contentPanel).getProvidedJavaScript();
-        String jsTemplate = js;
+        final String jsTemplate = js;
         add( new StringHeaderContributor( new JavaScriptTemplate( new TextTemplate() {
 
             @Override

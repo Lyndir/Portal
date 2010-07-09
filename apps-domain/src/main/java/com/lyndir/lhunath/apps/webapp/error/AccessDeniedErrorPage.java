@@ -20,16 +20,11 @@ import org.apache.wicket.markup.html.panel.Panel;
 
 
 /**
- * <h2>{@link AccessDeniedErrorPage}<br>
- * <sub>[in short] (TODO).</sub></h2>
+ * <h2>{@link AccessDeniedErrorPage}<br> <sub>[in short] (TODO).</sub></h2>
  *
- * <p>
- * [description / usage].
- * </p>
+ * <p> [description / usage]. </p>
  *
- * <p>
- * <i>Jun 10, 2009</i>
- * </p>
+ * <p> <i>Jun 10, 2009</i> </p>
  *
  * @author lhunath
  */
@@ -40,7 +35,6 @@ public class AccessDeniedErrorPage extends MessagePage {
 
         return new AccessDeniedErrorPanel( wicketId );
     }
-
 
     class AccessDeniedErrorPanel extends Panel {
 

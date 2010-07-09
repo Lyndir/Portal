@@ -15,13 +15,12 @@
  */
 package com.lyndir.lhunath.apps.webapp.page;
 
+import com.lyndir.lhunath.apps.model.AppVersion;
+import com.lyndir.lhunath.apps.model.Dependency;
 import java.text.DateFormat;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-
-import com.lyndir.lhunath.apps.model.AppVersion;
-import com.lyndir.lhunath.apps.model.Dependency;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -31,16 +30,11 @@ import org.apache.wicket.markup.html.panel.Panel;
 
 
 /**
- * <h2>{@link ArchivePanel}<br>
- * <sub>[in short] (TODO).</sub></h2>
+ * <h2>{@link ArchivePanel}<br> <sub>[in short] (TODO).</sub></h2>
  *
- * <p>
- * [description / usage].
- * </p>
+ * <p> [description / usage]. </p>
  *
- * <p>
- * <i>May 31, 2009</i>
- * </p>
+ * <p> <i>May 31, 2009</i> </p>
  *
  * @author lhunath
  */
@@ -61,11 +55,11 @@ public class ArchivePanel extends Panel {
             @Override
             protected void populateItem(ListItem<AppVersion> entryItem) {
 
-                AppVersion version = entryItem.getModelObject();
+                final AppVersion version = entryItem.getModelObject();
 
                 entryItem.add( new Label( "version", version.getFriendlyVersion() ) );
-                entryItem.add( new Label( "date", DateFormat.getDateInstance( DateFormat.LONG, getLocale() )
-                        .format( version.getCompletionDate() ) ) );
+                entryItem.add( new Label( "date", DateFormat.getDateInstance( DateFormat.LONG, getLocale() ).format(
+                        version.getCompletionDate() ) ) );
 
                 entryItem.add( new WebMarkupContainer( "screenshot" ) {
 

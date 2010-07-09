@@ -16,16 +16,9 @@
 package com.lyndir.lhunath.apps.model;
 
 /**
- * <h2>{@link GitHubSourceProvider}<br>
- * <sub>[in short] (TODO).</sub></h2>
+ * <h2>{@link GitHubSourceProvider}<br> <sub>Provides sources from github.com.</sub></h2>
  *
- * <p>
- * [description / usage].
- * </p>
- *
- * <p>
- * <i>Feb 3, 2010</i>
- * </p>
+ * <p> <i>Feb 3, 2010</i> </p>
  *
  * @author lhunath
  */

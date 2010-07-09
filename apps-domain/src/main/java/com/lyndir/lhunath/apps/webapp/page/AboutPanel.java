@@ -23,16 +23,11 @@ import org.apache.wicket.markup.html.panel.Panel;
 
 
 /**
- * <h2>{@link AboutPanel}<br>
- * <sub>[in short] (TODO).</sub></h2>
+ * <h2>{@link AboutPanel}<br> <sub>[in short] (TODO).</sub></h2>
  *
- * <p>
- * [description / usage].
- * </p>
+ * <p> [description / usage]. </p>
  *
- * <p>
- * <i>May 31, 2009</i>
- * </p>
+ * <p> <i>May 31, 2009</i> </p>
  *
  * @author lhunath
  */

@@ -16,16 +16,11 @@
 package com.lyndir.lhunath.apps.model;
 
 /**
- * <h2>{@link Theme}<br>
- * <sub>[in short] (TODO).</sub></h2>
+ * <h2>{@link Theme}<br> <sub>[in short] (TODO).</sub></h2>
  *
- * <p>
- * [description / usage].
- * </p>
+ * <p> [description / usage]. </p>
  *
- * <p>
- * <i>Feb 6, 2010</i>
- * </p>
+ * <p> <i>Feb 6, 2010</i> </p>
  *
  * @author lhunath
  */
@@ -36,7 +31,6 @@ public enum Theme {
     GREEN( "green" );
 
     private String internalName;
-
 
     /**
      * Create a new {@link Theme} instance.

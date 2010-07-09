@@ -19,12 +19,9 @@ import java.io.Serializable;
 
 
 /**
- * <h2>{@treeLink Dependency}<br>
- * <sub>[in short] (TODO).</sub></h2>
+ * <h2>{@treeLink Dependency}<br> <sub>Defines a project dependency and the location to obtain it.</sub></h2>
  *
- * <p>
- * <i>Mar 11, 2010</i>
- * </p>
+ * <p> <i>Mar 11, 2010</i> </p>
  *
  * @author lhunath
  */
@@ -33,7 +30,6 @@ public class Dependency implements Serializable {
     private String name;
     private String treeLink;
     private String snapshotLink;
-
 
     /**
      * Create a new {@treeLink Dependency} instance.
