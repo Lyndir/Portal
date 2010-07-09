@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.lyndir.lhunath</groupId>
         <artifactId>lyndir</artifactId>
-        <version>SNAPSHOT</version>
+        <version>1.3</version>
     </parent>
 
     <groupId>com.lyndir.lhunath.apps</groupId>
@@ -31,9 +31,16 @@
 
     <!-- CODE MANAGEMENT -->
     <scm>
-        <connection>${scm.git.pubbase}/apps.git</connection>
-        <developerConnection>${scm.git.devbase}/apps.git</developerConnection>
+        <url>${scm.codaset.webbase}/apps</url>
+        <connection>${scm.codaset.pubbase}/apps.git</connection>
+        <developerConnection>${scm.codaset.devbase}/apps.git</developerConnection>
     </scm>
+
+
+    <!-- DEFAULT PROPERTIES -->
+    <properties>
+        <release.version>1.0</release.version>
+    </properties>
 
 
     <!-- MODULES -->
