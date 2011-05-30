@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+
+    <head>
+        <title wicket:id="pageTitle">[Page Title]</title>
+
+        <link rel="icon" href="images/resources/favicon.png" type="image/x-png" />
+        <link rel="shortcut icon" href="images/resources/favicon.png" type="image/x-png" />
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+        <link rel="stylesheet" type="text/css" href="css/sprites/glossy-white/sprites.css" />
+        <link rel="stylesheet" type="text/css" href="css/sprites/silk/sprites.css" />
+        <link rel="stylesheet" type="text/css" href="css/screen.css" />
+    </head>
+
+    <body>
+        <div id="page">
+            <div id="head">
+                <ul id="strip">
+                    <li class="item" wicket:id="strip">
+                        <div class="caption">
+                            <span wicket:id="caption">[Caption]</span>
+
+                            <p wicket:id="description">[Description]</p>
+                        </div>
+                        <div class="closed" />
+                        <a class="link" href="#" wicket:id="link"></a>
+                    </li>
+                </ul>
+                <div id="logo">
+                    <div wicket:id="logo" />
+                </div>
+                <div class="separator" />
+                <div id="menu">
+                    <ul>
+                        <li class="item" wicket:id="menu">
+                            <a class="link" href="#" wicket:id="link">
+                                <span class="icon" wicket:id="icon"></span>
+                                <span class="name" wicket:id="name"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="content">
+                <!--h1 wicket:id="pageHeading" /-->
+                <!--img wicket:id="pageImage" /-->
+                <wicket:child />
+            </div>
+        </div>
+        <div id="foot" wicket:id="foot" />
+    </body>
+
+</html>
