@@ -11,17 +11,13 @@
 
             <wicket:enclosure child="youtube">
                 <div id="previewinfo">
-                    <wicket:message key="click">[Click the iPhone for a short gameplay video.]</wicket:message>
-                    <br />
+                    <wicket:message key="click">[Click the iPhone for a short gameplay video.]</wicket:message> <br />
 	                <span class="small">(<wicket:message key="click.alt">[or use]</wicket:message>
 	                    <a wicket:id="youtube" href="http://www.youtube.com/watch?v=[blub]"
-                           onclick="pageTracker._trackPageview('/movie/youtube-[100]');">
-                            <wicket:message key="video.youtube">[YouTube]</wicket:message>
-                        </a> /
-	                    <a wicket:id="mpeg" href="movies/[app]-[100].mp4"
-                           onclick="pageTracker._trackPageview('/movie/[app]-[100].mp4');">
-                            <wicket:message key="video.mpeg4">[MPEG-4]</wicket:message>
-                        </a>)
+                           onclick="pageTracker._trackPageview('/movie/youtube-[100]');"> <wicket:message
+                                key="video.youtube">[YouTube]</wicket:message> </a> /
+	                    <a wicket:id="mpeg" href="movies/[app]-[100].mp4" onclick="pageTracker._trackPageview('/movie/[app]-[100].mp4');">
+                        <wicket:message key="video.mpeg4">[MPEG-4]</wicket:message> </a>)
 	                </span>
                 </div>
             </wicket:enclosure>
