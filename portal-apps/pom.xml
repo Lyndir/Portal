@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- PROJECT METADATA -->
+    <parent>
+        <groupId>com.lyndir.lhunath</groupId>
+        <artifactId>lyndir</artifactId>
+        <version>1.12</version>
+    </parent>
+
+    <groupId>com.lyndir.lhunath.apps</groupId>
+    <artifactId>apps</artifactId>
+    <version>SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Apps Group</name>
+    <url>http://apps.lyndir.com</url>
+    <inceptionYear>2010</inceptionYear>
+    <description>
+        A generic application homepage library.
+    </description>
+
+    <organization>
+        <name>Lhunath</name>
+        <url>http://www.lhunath.com</url>
+    </organization>
+
+
+    <!-- CODE MANAGEMENT -->
+    <scm>
+        <url>${scm.codaset.webbase}/apps</url>
+        <connection>${scm.codaset.pubbase}/apps.git</connection>
+        <developerConnection>${scm.codaset.devbase}/apps.git</developerConnection>
+    </scm>
+
+
+    <!-- DEFAULT PROPERTIES -->
+    <properties>
+        <release.version>1.0</release.version>
+    </properties>
+
+
+    <!-- MODULES -->
+    <modules>
+        <module>apps-domain</module>
+        <module>apps-webapp</module>
+    </modules>
+
+</project>
+
