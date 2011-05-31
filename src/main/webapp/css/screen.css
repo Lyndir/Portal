@@ -24,7 +24,7 @@ h3 {
     margin:                     1em 0 1ex;
 }
 p {
-    text-shadow:                #CCC 0 1px 1px;
+    text-shadow:                #CCC 0 1px 2px;
     text-align:                 justify;
 }
 a, a:link, .link {
@@ -69,14 +69,15 @@ a:hover, .link:hover {
 }
 #foot {
     background:                 url('../images/foot.png') no-repeat center top;
+    color:                      #FFF;
+    text-shadow:                #999 0 1px 2px;
 
     width:                      1000px;
     margin:                     0 auto;
-
-    text-align:                 center;
-    color:                      #BBB;
-
     padding:                    1em;
+
+    font-weight:                bold;
+    text-align:                 center;
 }
 
 /* Content */
@@ -240,6 +241,8 @@ a:hover, .link:hover {
     margin:                     -70px 0 0;
 }
 #menu {
+    text-shadow:                #999 0 1px 2px;
+
     position:                   absolute;
     z-index:                    1;
     right:                      0;
@@ -301,9 +304,11 @@ a:hover, .link:hover {
     opacity:                    0;
 
     position:                   absolute;
-    bottom:                     -1.5em;
+    bottom:                     -2em;
     right:                      1em;
     width:                      100%;
+    padding:                    0.2em;
+    margin:                     0;
 
     text-align:                 center;
 
@@ -323,7 +328,7 @@ a:hover, .link:hover {
     padding:                    5em 0;
 }
 p.summary {
-    color:                      black;
+    color:                      #222;
     background:                 #F3F3F3;
     border:                     1px solid #FFF;
     border-radius:              0 10px 10px 15px;
