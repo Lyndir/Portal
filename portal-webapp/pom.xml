@@ -12,11 +12,11 @@
     </parent>
 
     <groupId>com.lyndir.lhunath.portal</groupId>
-    <artifactId>portal-apps</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>portal-webapp</artifactId>
+    <packaging>war</packaging>
 
-    <name>Lyndir Portal: Apps</name>
-    <description>The skeleton web application for applications that want to use the Lyndir Portal layout.</description>
+    <name>Lyndir Portal: Web Application</name>
+    <description>The skeleton web application for sites that want to use the Lyndir Portal layout.</description>
 
 
     <!-- BUILD CONFIGURATION -->
@@ -46,15 +46,6 @@
                             </excludes>
                         </resource>
                     </webResources>
-                    <overlays>
-                        <overlay>
-                            <groupId>com.lyndir.lhunath.portal</groupId>
-                            <artifactId>portal-webapp</artifactId>
-                            <excludes>
-                                <exclude>WEB-INF/web.xml</exclude>
-                            </excludes>
-                        </overlay>
-                    </overlays>
                 </configuration>
             </plugin>
         </plugins>
@@ -66,12 +57,43 @@
 
         <!-- Opal -->
         <dependency>
-            <groupId>com.lyndir.lhunath.portal</groupId>
-            <artifactId>portal-webapp</artifactId>
+            <groupId>com.lyndir.lhunath.opal</groupId>
+            <artifactId>opal-wicket</artifactId>
             <version>GIT-SNAPSHOT</version>
+        </dependency>
+
+        <!-- Web -->
+        <dependency>
+            <groupId>aopalliance</groupId>
+            <artifactId>aopalliance</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-guice</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.inject.extensions</groupId>
+            <artifactId>guice-servlet</artifactId>
+        </dependency>
+
+        <!-- Logging -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
         </dependency>
 
     </dependencies>
 
 </project>
-
