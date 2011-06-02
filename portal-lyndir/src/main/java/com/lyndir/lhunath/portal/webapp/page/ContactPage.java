@@ -11,7 +11,7 @@ import org.apache.wicket.model.Model;
  *
  * @author lhunath
  */
-public class ContactPage extends LayoutPage {
+public class ContactPage extends LyndirPage {
 
     @Override
     protected IModel<String> getPageImage() {

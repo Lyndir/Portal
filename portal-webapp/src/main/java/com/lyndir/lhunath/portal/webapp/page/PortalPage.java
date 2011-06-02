@@ -26,17 +26,17 @@ import org.jetbrains.annotations.Nullable;
 
 
 /**
- * <h2>{@link LayoutPage}<br> <sub>[in short] (TODO).</sub></h2>
+ * <h2>{@link PortalPage}<br> <sub>[in short] (TODO).</sub></h2>
  *
  * <p> <i>05 02, 2010</i> </p>
  *
  * @author lhunath
  */
-public abstract class LayoutPage extends WebPage {
+public abstract class PortalPage extends WebPage {
 
     StripItem activeItem;
 
-    protected LayoutPage() {
+    protected PortalPage() {
 
         add( new Label( "pageTitle", getPageTitle() ) );
         add(
@@ -99,12 +99,7 @@ public abstract class LayoutPage extends WebPage {
                             }
                         } ) ) );
         add(
-                new ListView<Tab>(
-                        "menu", ImmutableList.of(
-                        new Tab( AboutPage.class, "♔", Model.of( "About" ) ), //
-                        new Tab( ContactPage.class, "♗", Model.of( "Contact" ) ), //
-                        new Tab( CreationsPage.class, "♖", Model.of( "Creations" ) ) //
-                ) ) {
+                new ListView<Tab>( "menu", getMenu() ) {
 
                     @Override
                     protected void populateItem(final ListItem<Tab> item) {
@@ -155,9 +150,11 @@ public abstract class LayoutPage extends WebPage {
         trackVariables.put( "pageView", getPageClass().getSimpleName() );
         add(
                 new StringHeaderContributor(
-                        new JavaScriptTemplate( new PackagedTextTemplate( LayoutPage.class, "trackPage.js" ) ).asString(
+                        new JavaScriptTemplate( new PackagedTextTemplate( PortalPage.class, "trackPage.js" ) ).asString(
                                 trackVariables ) ) );
     }
+
+    protected abstract ImmutableList<Tab> getMenu();
 
     protected abstract IModel<String> getPageTitle();
 

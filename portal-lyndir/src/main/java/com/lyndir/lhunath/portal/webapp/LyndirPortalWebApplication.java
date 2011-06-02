@@ -1,9 +1,9 @@
 package com.lyndir.lhunath.portal.webapp;
 
+import com.google.common.collect.ImmutableMap;
 import com.lyndir.lhunath.portal.webapp.page.*;
+import java.util.Map;
 import org.apache.wicket.Page;
-import org.apache.wicket.protocol.http.WebApplication;
-import org.apache.wicket.request.target.coding.HybridUrlCodingStrategy;
 
 
 /**
@@ -13,14 +13,16 @@ import org.apache.wicket.request.target.coding.HybridUrlCodingStrategy;
  *
  * @author lhunath
  */
-public class PortalWebApplication extends WebApplication {
+public class LyndirPortalWebApplication extends PortalWebApplication {
 
     @Override
-    protected void init() {
+    protected Map<String, Class<? extends Page>> getMountPoints() {
 
-        mount( new HybridUrlCodingStrategy( "/about", AboutPage.class ) );
-        mount( new HybridUrlCodingStrategy( "/contact", ContactPage.class ) );
-        mount( new HybridUrlCodingStrategy( "/creations", CreationsPage.class ) );
+        return ImmutableMap.<String, Class<? extends Page>>builder()
+                           .put( "/about", AboutPage.class )
+                           .put( "/contact", ContactPage.class )
+                           .put( "/creations", CreationsPage.class )
+                           .build();
     }
 
     @Override

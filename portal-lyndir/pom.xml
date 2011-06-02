@@ -6,7 +6,7 @@
 
     <!-- PROJECT METADATA -->
     <parent>
-        <groupId>com.lyndir.lhunath.lyndir.portal</groupId>
+        <groupId>com.lyndir.lhunath.portal</groupId>
         <artifactId>portal</artifactId>
         <version>GIT-SNAPSHOT</version>
     </parent>
@@ -26,26 +26,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
-                    <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
-                    <webResources>
-                        <resource>
-                            <directory>${basedir}/src/main/webapp/WEB-INF</directory>
-                            <targetPath>WEB-INF</targetPath>
-                            <filtering>true</filtering>
-                        </resource>
-                        <resource>
-                            <filtering>false</filtering>
-                            <directory>${basedir}/src/main/java</directory>
-                            <targetPath>WEB-INF/classes</targetPath>
-                            <includes>
-                                <include>**/*.html</include>
-                                <include>**/*.xml</include>
-                            </includes>
-                            <excludes>
-                                <exclude>**/*.java</exclude>
-                            </excludes>
-                        </resource>
-                    </webResources>
                     <overlays>
                         <overlay>
                             <groupId>com.lyndir.lhunath.portal</groupId>
@@ -56,6 +36,10 @@
                         </overlay>
                     </overlays>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.appfuse.plugins</groupId>
+                <artifactId>maven-warpath-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
@@ -92,11 +76,18 @@
     <!-- DEPENDENCY MANAGEMENT -->
     <dependencies>
 
-        <!-- Opal -->
+        <!-- Portal -->
         <dependency>
             <groupId>com.lyndir.lhunath.portal</groupId>
             <artifactId>portal-webapp</artifactId>
             <version>GIT-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>com.lyndir.lhunath.portal</groupId>
+            <artifactId>portal-webapp</artifactId>
+            <version>GIT-SNAPSHOT</version>
+            <type>warpath</type>
         </dependency>
 
     </dependencies>

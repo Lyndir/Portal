@@ -28,15 +28,15 @@ import org.apache.wicket.protocol.http.*;
 
 
 /**
- * <h2>{@link GuiceContext}<br> <sub>[in short] (TODO).</sub></h2>
+ * <h2>{@link PortalGuiceContext}<br> <sub>[in short] (TODO).</sub></h2>
  *
  * <p> <i>Jan 11, 2010</i> </p>
  *
  * @author lhunath
  */
-public class GuiceContext extends GuiceServletContextListener {
+public abstract class PortalGuiceContext extends GuiceServletContextListener {
 
-    static final Logger logger = Logger.get( GuiceContext.class );
+    static final Logger logger = Logger.get( PortalGuiceContext.class );
 
     private static final String PATH_WICKET = "/*";
 
@@ -57,13 +57,15 @@ public class GuiceContext extends GuiceServletContextListener {
 
                 // Wicket
                 paramBuilder = new ImmutableMap.Builder<String, String>();
-                paramBuilder.put( ContextParamWebApplicationFactory.APP_CLASS_PARAM, PortalWebApplication.class.getCanonicalName() );
+                paramBuilder.put( ContextParamWebApplicationFactory.APP_CLASS_PARAM, getWebApplication().getCanonicalName() );
                 paramBuilder.put( WicketFilter.FILTER_MAPPING_PARAM, PATH_WICKET );
                 filter( PATH_WICKET ).through( wicketFilter, paramBuilder.build() );
                 bind( WicketFilter.class ).in( Scopes.SINGLETON );
             }
         } );
     }
+
+    protected abstract Class<? extends PortalWebApplication> getWebApplication();
 
     /**
      * @param servletContext The request's servlet context.

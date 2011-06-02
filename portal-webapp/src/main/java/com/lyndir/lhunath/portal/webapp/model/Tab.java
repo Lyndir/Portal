@@ -1,5 +1,6 @@
 package com.lyndir.lhunath.portal.webapp.model;
 
+import com.lyndir.lhunath.portal.webapp.page.PortalPage;
 import java.io.Serializable;
 import org.apache.wicket.Page;
 import org.apache.wicket.model.IModel;
@@ -18,7 +19,7 @@ public class Tab implements Serializable {
     private final String icon;
     private final IModel<String> name;
 
-    public Tab(final Class<? extends Page> page, final String icon, final IModel<String> name) {
+    public Tab(final Class<? extends PortalPage> page, final String icon, final IModel<String> name) {
         this.page = page;
         this.icon = icon;
         this.name = name;

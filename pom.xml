@@ -36,8 +36,8 @@
 
     <modules>
         <module>portal-webapp</module>
-        <module>portal-apps</module>
         <module>portal-lyndir</module>
+        <module>portal-apps</module>
     </modules>
 
 </project>

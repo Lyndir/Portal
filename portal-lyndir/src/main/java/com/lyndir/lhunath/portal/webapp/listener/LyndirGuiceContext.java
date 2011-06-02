@@ -15,73 +15,22 @@
  */
 package com.lyndir.lhunath.portal.webapp.listener;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.inject.*;
-import com.google.inject.servlet.GuiceServletContextListener;
-import com.google.inject.servlet.ServletModule;
-import com.lyndir.lhunath.opal.system.logging.Logger;
+import com.lyndir.lhunath.portal.webapp.LyndirPortalWebApplication;
 import com.lyndir.lhunath.portal.webapp.PortalWebApplication;
-import javax.servlet.ServletContext;
-import org.apache.wicket.Application;
-import org.apache.wicket.protocol.http.*;
 
 
 /**
- * <h2>{@link GuiceContext}<br> <sub>[in short] (TODO).</sub></h2>
+ * <h2>{@link PortalGuiceContext}<br> <sub>[in short] (TODO).</sub></h2>
  *
  * <p> <i>Jan 11, 2010</i> </p>
  *
  * @author lhunath
  */
-public class GuiceContext extends GuiceServletContextListener {
+public class LyndirGuiceContext extends PortalGuiceContext {
 
-    static final Logger logger = Logger.get( GuiceContext.class );
-
-    private static final String PATH_WICKET = "/*";
-
-    static final Key<WicketFilter> wicketFilter = Key.get( WicketFilter.class );
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    protected Injector getInjector() {
+    protected Class<? extends PortalWebApplication> getWebApplication() {
 
-        return Guice.createInjector( Stage.DEVELOPMENT, new ServletModule() {
-
-            @Override
-            protected void configureServlets() {
-
-                Builder<String, String> paramBuilder;
-
-                // Wicket
-                paramBuilder = new ImmutableMap.Builder<String, String>();
-                paramBuilder.put( ContextParamWebApplicationFactory.APP_CLASS_PARAM, PortalWebApplication.class.getCanonicalName() );
-                paramBuilder.put( WicketFilter.FILTER_MAPPING_PARAM, PATH_WICKET );
-                filter( PATH_WICKET ).through( wicketFilter, paramBuilder.build() );
-                bind( WicketFilter.class ).in( Scopes.SINGLETON );
-            }
-        } );
-    }
-
-    /**
-     * @param servletContext The request's servlet context.
-     *
-     * @return The Guice {@link Injector} that was added to the given {@link ServletContext} on initialization.
-     */
-    public static Injector get(final ServletContext servletContext) {
-
-        return (Injector) servletContext.getAttribute( Injector.class.getName() );
-    }
-
-    /**
-     * @return The Guice {@link Injector} that was created for the {@link WebApplication} this thread is working with.
-     *
-     * @see Application#get()
-     */
-    public static Injector get() {
-
-        return get( ((WebApplication) Application.get( wicketFilter.toString() )).getServletContext() );
+        return LyndirPortalWebApplication.class;
     }
 }

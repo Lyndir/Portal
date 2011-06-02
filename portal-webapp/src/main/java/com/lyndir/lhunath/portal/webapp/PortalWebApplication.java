@@ -1,6 +1,6 @@
 package com.lyndir.lhunath.portal.webapp;
 
-import com.lyndir.lhunath.portal.webapp.page.*;
+import java.util.Map;
 import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.target.coding.HybridUrlCodingStrategy;
@@ -18,14 +18,9 @@ public abstract class PortalWebApplication extends WebApplication {
     @Override
     protected void init() {
 
-        mount( new HybridUrlCodingStrategy( "/about", AboutPage.class ) );
-        mount( new HybridUrlCodingStrategy( "/contact", ContactPage.class ) );
-        mount( new HybridUrlCodingStrategy( "/creations", CreationsPage.class ) );
+        for (final Map.Entry<String, Class<? extends Page>> mountPoint : getMountPoints().entrySet())
+            mount( new HybridUrlCodingStrategy( mountPoint.getKey(), mountPoint.getValue() ) );
     }
 
-    @Override
-    public Class<? extends Page> getHomePage() {
-
-        return AboutPage.class;
-    }
+    protected abstract Map<String, Class<? extends Page>> getMountPoints();
 }
