@@ -13,6 +13,12 @@ import org.apache.wicket.model.Model;
 public abstract class LyndirPage extends PortalPage {
 
     @Override
+    protected String getGoogleAnalyticsID() {
+
+        return "UA-90535-8";
+    }
+
+    @Override
     protected ImmutableList<Tab> getMenu() {
 
         return ImmutableList.of(

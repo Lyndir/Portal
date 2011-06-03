@@ -15,6 +15,7 @@
  */
 package com.lyndir.lhunath.portal.webapp.listener;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMap.Builder;
 import com.google.inject.*;
@@ -22,6 +23,7 @@ import com.google.inject.servlet.GuiceServletContextListener;
 import com.google.inject.servlet.ServletModule;
 import com.lyndir.lhunath.opal.system.logging.Logger;
 import com.lyndir.lhunath.portal.webapp.PortalWebApplication;
+import java.util.Collection;
 import javax.servlet.ServletContext;
 import org.apache.wicket.Application;
 import org.apache.wicket.protocol.http.*;
@@ -48,21 +50,31 @@ public abstract class PortalGuiceContext extends GuiceServletContextListener {
     @Override
     protected Injector getInjector() {
 
-        return Guice.createInjector( Stage.DEVELOPMENT, new ServletModule() {
+        return Guice.createInjector(
+                Stage.DEVELOPMENT, ImmutableList.<Module>builder().addAll( getApplicationModules() ).add(
+                new ServletModule() {
 
-            @Override
-            protected void configureServlets() {
+                    @Override
+                    protected void configureServlets() {
 
-                Builder<String, String> paramBuilder;
+                        Builder<String, String> paramBuilder;
 
-                // Wicket
-                paramBuilder = new ImmutableMap.Builder<String, String>();
-                paramBuilder.put( ContextParamWebApplicationFactory.APP_CLASS_PARAM, getWebApplication().getCanonicalName() );
-                paramBuilder.put( WicketFilter.FILTER_MAPPING_PARAM, PATH_WICKET );
-                filter( PATH_WICKET ).through( wicketFilter, paramBuilder.build() );
-                bind( WicketFilter.class ).in( Scopes.SINGLETON );
-            }
-        } );
+                        // Wicket
+                        paramBuilder = new ImmutableMap.Builder<String, String>();
+                        paramBuilder.put( WicketFilter.APP_FACT_PARAM, ContextParamWebApplicationFactory.class.getCanonicalName() );
+                        paramBuilder.put( ContextParamWebApplicationFactory.APP_CLASS_PARAM, getWebApplication().getCanonicalName() );
+                        paramBuilder.put( WicketFilter.FILTER_MAPPING_PARAM, PATH_WICKET );
+                        paramBuilder.put( Application.CONFIGURATION, Application.DEPLOYMENT );
+
+                        filter( PATH_WICKET ).through( wicketFilter, paramBuilder.build() );
+                        bind( WicketFilter.class ).in( Scopes.SINGLETON );
+                    }
+                } ).build() );
+    }
+
+    protected Collection<? extends Module> getApplicationModules() {
+
+        return ImmutableList.of();
     }
 
     protected abstract Class<? extends PortalWebApplication> getWebApplication();

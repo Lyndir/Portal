@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" xmlns:wicket="http://wicket.sourceforge.net/">
+
+    <body>
+        <wicket:panel>
+
+            <div class="text">
+                <wicket:message key="info" />
+
+                <blockquote>
+                    <p><b> <wicket:message key="features">[FEATURES]</wicket:message> :</b></p>
+                    <ul>
+                        <wicket:container wicket:id="versions">
+                            <li class="separator">
+                                <span wicket:id="version">[1.0]</span>
+                            </li>
+                            <li wicket:id="changes">
+                                <wicket:container wicket:id="change">[Fixed foo to be bar]</wicket:container>
+                            </li>
+                        </wicket:container>
+                    </ul>
+                </blockquote>
+            </div>
+
+        </wicket:panel>
+    </body>
+
+</html>

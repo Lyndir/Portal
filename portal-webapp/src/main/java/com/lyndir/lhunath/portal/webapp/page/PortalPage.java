@@ -4,12 +4,12 @@ import static com.lyndir.lhunath.opal.system.util.ObjectUtils.ifNotNullElse;
 
 import com.google.common.base.Function;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.lyndir.lhunath.opal.wayward.behavior.CSSClassAttributeAppender;
 import com.lyndir.lhunath.opal.wayward.behavior.CSSStyleAttributeAppender;
 import com.lyndir.lhunath.portal.webapp.model.StripItem;
 import com.lyndir.lhunath.portal.webapp.model.Tab;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 import org.apache.wicket.RestartResponseException;
 import org.apache.wicket.behavior.StringHeaderContributor;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -41,25 +41,7 @@ public abstract class PortalPage extends WebPage {
         add( new Label( "pageTitle", getPageTitle() ) );
         add(
                 new ListView<StripItem>(
-                        "strip", ImmutableList.of(
-                        activeItem = new StripItem(
-                                Model.of( "Lyndir" ), "images/icon.lyndir.png", "images/logo.lyndir.png", "http://www.lyndir.com",
-                                Model.of( "Modern Design and Development" ), null ), //
-                        new StripItem(
-                                Model.of( "Gorillas" ), "images/icon.gorillas.png", "images/logo.gorillas.png",
-                                "http://gorillas.lyndir.com",
-                                Model.of( "Gorillas is a resurrection of the classic QBasic game shipped with MS-DOS 5." ), null ), //
-                        new StripItem(
-                                Model.of( "DeBlock" ), "images/icon.deblock.png", "images/logo.deblock.png", "http://deblock.lyndir.com",
-                                Model.of(
-                                        "DeBlock is a block destruction game in the style of Bejuweled or Destruct-o-Block, but unique altogether." ),
-                                null ), //
-                        new StripItem(
-                                Model.of( "Opal" ), "images/icon.opal.png", "images/logo.lyndir.png", "http://opal.lyndir.com",
-                                Model.of( "Collection of Java convenience libraries." ), null ), //
-                        new StripItem(
-                                Model.of( "iLibs" ), "images/icon.ilibs.png", "images/logo.lyndir.png", "http://ilibs.lyndir.com",
-                                Model.of( "Collection of iOS convenience libraries." ), null ) ) ) {
+                        "strip", getStripItems() ) {
 
                     @Override
                     protected void populateItem(final ListItem<StripItem> item) {
@@ -141,17 +123,61 @@ public abstract class PortalPage extends WebPage {
 
                                         return from.getObject();
                                     }
-                                }, "Copyright 2011, lhunath" );
+                                }, loadFooter() );
                     }
-                } ) );
+                } ) {
+                    @Override
+                    protected void onConfigure() {
 
-        Map<String, Object> trackVariables = new HashMap<String, Object>();
-        trackVariables.put( "googleAnalyticsID", "UA-90535-8" );
-        trackVariables.put( "pageView", getPageClass().getSimpleName() );
+                        super.onConfigure();
+
+                        setVisible( getDefaultModelObject() != null );
+                    }
+                } );
         add(
                 new StringHeaderContributor(
-                        new JavaScriptTemplate( new PackagedTextTemplate( PortalPage.class, "trackPage.js" ) ).asString(
-                                trackVariables ) ) );
+                        new LoadableDetachableModel<String>() {
+                            @Override
+                            protected String load() {
+
+                                return new JavaScriptTemplate( new PackagedTextTemplate( PortalPage.class, "trackPage.js" ) ).asString(
+                                        ImmutableMap.<String, Object>builder() //
+                                                .put( "googleAnalyticsID", getGoogleAnalyticsID() ) //
+                                                .put( "pageView", getPageClass().getSimpleName() ).build() );
+                            }
+                        } ) );
+    }
+
+    protected abstract String getGoogleAnalyticsID();
+
+    @Nullable
+    protected String loadFooter() {
+
+        return "Copyright 2011, lhunath";
+    }
+
+    protected IModel<? extends List<? extends StripItem>> getStripItems() {
+
+        return Model.ofList(
+                ImmutableList.of(
+                        activeItem = new StripItem(
+                                Model.of( "Lyndir" ), "images/icon.lyndir.png", "images/logo.lyndir.png", "http://www.lyndir.com",
+                                Model.of( "Modern Design and Development" ), null ), //
+                        new StripItem(
+                                Model.of( "Gorillas" ), "images/icon.gorillas.png", "images/logo.gorillas.png",
+                                "http://gorillas.lyndir.com",
+                                Model.of( "Gorillas is a resurrection of the classic QBasic game shipped with MS-DOS 5." ), null ), //
+                        new StripItem(
+                                Model.of( "DeBlock" ), "images/icon.deblock.png", "images/logo.deblock.png", "http://deblock.lyndir.com",
+                                Model.of(
+                                        "DeBlock is a block destruction game in the style of Bejuweled or Destruct-o-Block, but unique altogether." ),
+                                null ), //
+                        new StripItem(
+                                Model.of( "Opal" ), "images/icon.opal.png", "images/logo.lyndir.png", "http://opal.lyndir.com",
+                                Model.of( "Collection of Java convenience libraries." ), null ), //
+                        new StripItem(
+                                Model.of( "iLibs" ), "images/icon.ilibs.png", "images/logo.lyndir.png", "http://ilibs.lyndir.com",
+                                Model.of( "Collection of iOS convenience libraries." ), null ) ) );
     }
 
     protected abstract ImmutableList<Tab> getMenu();
