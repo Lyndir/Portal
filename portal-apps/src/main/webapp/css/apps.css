@@ -13,68 +13,11 @@
 /*******************************************************************************
  * GLOBAL PROPERTIES *
  */
-html, body {
-    background:         white url("../images/layout/head.tile.png") repeat-x fixed;
-
-    margin:             0;
-    padding:            0;
-
-    font-size:          100.01%;
-}
-body {
-    background:         url("../images/layout/head.logo.png") no-repeat fixed;
-    color:              #333;
-
-    padding:            250px 1em 2em;
-
-    text-align:         center;
-    font-family:        "Helvetica Neue", Arial, Helvetica, sans-serif;
-}
-a, a:link {
-    color:              #333;
-    border-bottom:      1px dotted #333;
-
-    text-decoration:    none;
-}
-a:hover {
-    color:              #000;
-    border-bottom:      1px solid #000;
-
-    text-decoration:    none;
-}
-#about a {
-    color:              #DDD;
-    border-bottom:      1px dotted #DDD;
-}
-#about a:hover {
-    color:              #FFF;
-    border-bottom:      1px solid #FFF;
-}
-a img {
-    border:             none;                                                   /* IE puts borders on linked images */
-}
-h1 {
-    margin:             0 0 0.5ex;
-}
-h2 {
-    margin:             1em 2em;
-
-    font-size:          2em;
-}
-h3 {
-    margin:             1em;
-
-    font-size:          1.5em;
-}
 h1 sup, h2 sup, h3 sup {
     display:            block;
-
     margin-left:        2em;
 
-    font-size:          12pt;
-}
-h5 {
-    border-bottom:      1px solid #999;
+    font-size:          60%;
 }
 code {
     font-size:          inherit;
@@ -88,48 +31,27 @@ code {
     width:              0;
     height:             1px;
 }
-.small {
-    font-size:          smaller;
-}
-.noborder {
-    border:             none;
-}
 .text {
-    width:              50%;
+    background:         rgba(90%, 90%, 90%, .3);
+    border:             1px solid #DDD;
+    border-radius:      5px;
+    box-shadow:         inset 0 0 15px #FAFAFA, 1px 1px 5px rgba(220, 220, 220, 0.5);
+
     margin:             1em auto;
     padding:            1em;
 
-    background:         #CCC;
-    border:             1px solid #999;
-
-    text-align:         left;
-    font-size:          smaller;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition:    all 0.2s ease-in-out;
+    -o-transition:      all 0.2s ease-in-out;
+    -ms-transition:     all 0.2s ease-in-out;
+    transition:         all 0.2s ease-in-out;
 }
-.text[class] {
-    background:         rgba(85%, 85%, 85%, .7);
+.text:hover {
+    background:         rgba(90%, 90%, 90%, .5);
 }
 .error {
-    background:         #FBB;
-    border:             1px solid #F99;
-}
-.error[class] {
     background:         rgba(100%, 70%, 70%, .3);
-}
-.floatstop {
-    clear:              both;
-}
-.separator {
-    padding:            0.5em 1em;
-    margin-top:         1em;
-
-    border-top:         1px solid #999;
-
-    list-style:         none;
-    text-align:         right;
-    font-size:          0.5em;
-}
-.separator span {
-    float:              right;
+    border:             1px solid #F99;
 }
 .note {
     width:              auto;
@@ -137,8 +59,6 @@ code {
     margin:             2em 1em;
     margin-left:        5em;
     padding:            1em 2em 1em 3em;
-
-    border-left:        2px solid #999;
 }
 .note:hover {
     border-color:       #DDD;
@@ -148,10 +68,10 @@ code {
 }
 .appstore {
     position:           absolute;
-    top:                50px;
-    left:               50%;
-    margin-left:        -92px;
-    border:             none;
+    display:            block;
+    top:                1em;
+
+    text-align:         center;
 }
 .twitter {
     position:           fixed;
@@ -162,6 +82,7 @@ code {
 /*******************************************************************************
  * GLOBAL PROPERTIES *
  */
+/*
 #head {
     position:           fixed;
     z-index:            90;
@@ -267,19 +188,27 @@ code {
     text-align:         center;
     font-size:          1.5em;
 }
-#foot {
+    */
+#content .foot {
     position:           fixed;
-
     bottom:             0;
     left:               0;
     width:              100%;
     height:             1.5em;
     padding:            0.5em 0 0;
+}
+.version {
+    padding:            0.5em 1em;
+    margin-top:         1em;
 
-    background:         #CCC;
     border-top:         1px solid #999;
 
+    list-style:         none;
+    text-align:         right;
     font-size:          0.5em;
+}
+.version span {
+    float:              right;
 }
 #head .button {
     display:            block;
@@ -315,10 +244,13 @@ code {
     background:         #596            !important;
     border:             1px solid #CDC  !important;
 }
+.floatstop {
+    clear:              both;
+}
 .entry {
     padding:            1em 2em;
     margin:             2em auto;
-    width:              63%;
+    width:              75%;
 }
 .entry img {
     float:              right;
@@ -326,31 +258,74 @@ code {
     width:              45%;
 }
 .entry ul.buttons {
-    margin:             0 0 0 7em;
+    margin:             0;
+
+    list-style:         none;
 }
 .entry ul.buttons li {
     display:            block;
-    float:              left;
 
     padding:            0;
     margin:             0 1em 1em;
 }
 .entry ul.buttons li .button {
+    background:         rgba(200, 200, 200, 0.3);
+    border:             1px solid #FFF;
+    border-radius:      5px;
+    box-shadow:         inset 0 0 15px #FAFAFA, 1px 1px 4px #CCC;
+
     display:            block;
 
-    padding:            1ex;
+    padding:            1ex 1em;
     margin:             0;
-    min-width:          12ex;
 
-    background:         #CCC;
-    border:             1px solid #999;
-
-    text-align:         center;
+    text-decoration:    none;
     font-size:          larger;
     white-space:        nowrap;
+    cursor:             pointer;
+
+    -webkit-transition:         all 0.2s ease-in-out;
+    -moz-transition:            all 0.2s ease-in-out;
+    -o-transition:              all 0.2s ease-in-out;
+    -ms-transition:             all 0.2s ease-in-out;
+    transition:                 all 0.2s ease-in-out;
 }
 .entry ul.buttons li .button:hover {
-    background:         #FFF;
+    background:         rgba(240, 240, 240, 0.3);
+}
+.entry ul.buttons li .button:hover .link {
+    text-decoration:    none;
+}
+.options {
+    display:            inline-block;
+}
+.button:hover .option.default, .options .option:hover {
+    background-color:   rgba(0, 0, 0, 0.1);
+    border-color:       rgba(0, 0, 0, 0.2);
+}
+.options:hover .option.default:not(:hover) {
+    background-color:   transparent;
+    border-color:       transparent;
+}
+.button .option {
+    opacity:            0;
+    margin-top:         -0.5ex;
+    padding-left:       0;
+    border:             1px solid transparent;
+    border-radius:      5px;
+
+    -webkit-transition:         all 0.2s ease-in-out;
+    -moz-transition:            all 0.2s ease-in-out;
+    -o-transition:              all 0.2s ease-in-out;
+    -ms-transition:             all 0.2s ease-in-out;
+    transition:                 all 0.2s ease-in-out;
+}
+.button:hover .option {
+    opacity:            1;
+    padding-left:       28px;
+}
+.button .options {
+    float:              right;
 }
 .tip {
     position:           absolute;
@@ -388,15 +363,15 @@ object {
     margin:             -1em auto 1ex;
 
     font-size:          smaller;
+    text-align:         center;
 }
 #preview {
-    position:           relative;
+    background:         url("../images/game/preview.png") no-repeat;
 
+    position:           relative;
     width:              720px;
     height:             515px;
     margin:             0 auto;
-
-    background:         url("../images/game/preview.png") no-repeat;
 }
 #preview .description {
     color:              white;
@@ -417,6 +392,8 @@ object {
 #preview .description p {
     display:            none;
     padding:            1ex;
+
+    text-align:         center;
 }
 #preview .description:hover div {
     background:         rgba(0, 0, 0, 0.7);

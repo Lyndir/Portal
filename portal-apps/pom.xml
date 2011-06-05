@@ -13,6 +13,7 @@
 
     <groupId>com.lyndir.lhunath.portal</groupId>
     <artifactId>portal-apps</artifactId>
+    <version>GIT-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>Lyndir Portal: Apps</name>
@@ -32,14 +33,11 @@
                             <artifactId>portal-webapp</artifactId>
                             <excludes>
                                 <exclude>WEB-INF/web.xml</exclude>
+                                <exclude>WEB-INF/lib/*</exclude>
                             </excludes>
                         </overlay>
                     </overlays>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.appfuse.plugins</groupId>
-                <artifactId>maven-warpath-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

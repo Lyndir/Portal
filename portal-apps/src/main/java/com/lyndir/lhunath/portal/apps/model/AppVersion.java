@@ -15,6 +15,8 @@
  */
 package com.lyndir.lhunath.portal.apps.model;
 
+import com.lyndir.lhunath.opal.system.util.ObjectMeta;
+import com.lyndir.lhunath.opal.system.util.ObjectUtils;
 import java.io.Serializable;
 import java.util.*;
 
@@ -28,19 +30,20 @@ import java.util.*;
  *
  * @author lhunath
  */
+@ObjectMeta
 public class AppVersion implements Serializable, Comparable<AppVersion> {
 
     private static final SortedMap<String, AppVersion> versions = new TreeMap<String, AppVersion>();
 
-    private App app;
-    private String internalVersion;
-    private String friendlyVersion;
-    private String tagLine;
-    private String description;
-    private List<Dependency> dependencies;
-    private Date completionDate;
-    private String youTubeID;
-    private List<String> changes;
+    private final App app;
+    private final String internalVersion;
+    private final String friendlyVersion;
+    private final String tagLine;
+    private final String description;
+    private final List<Dependency> dependencies;
+    private final Date completionDate;
+    private final String youTubeID;
+    private final List<String> changes;
 
     public static List<AppVersion> getAll() {
 
@@ -52,13 +55,13 @@ public class AppVersion implements Serializable, Comparable<AppVersion> {
         return versions.get( versions.lastKey() );
     }
 
-    public static void register(AppVersion version) {
+    public static void register(final AppVersion version) {
 
         versions.put( version.getInternalVersion(), version );
     }
 
-    public AppVersion(App app, String internalVersion, String friendlyVersion, String tagLine, String description,
-                      List<Dependency> dependencies, Date completionDate, String youTubeID, String... changes) {
+    public AppVersion(final App app, final String internalVersion, final String friendlyVersion, final String tagLine, final String description,
+                      final List<Dependency> dependencies, final Date completionDate, final String youTubeID, final String... changes) {
 
         this.app = app;
         this.internalVersion = internalVersion;
@@ -167,27 +170,11 @@ public class AppVersion implements Serializable, Comparable<AppVersion> {
     }
 
     /**
-     * @param tagLine The tagLine of this {@link AppVersion}.
-     */
-    public void setTagLine(String tagLine) {
-
-        this.tagLine = tagLine;
-    }
-
-    /**
      * @return The tagLine of this {@link AppVersion}.
      */
     public String getTagLine() {
 
         return tagLine;
-    }
-
-    /**
-     * @param description The description of this {@link AppVersion}.
-     */
-    public void setDescription(String description) {
-
-        this.description = description;
     }
 
     /**
@@ -239,13 +226,22 @@ public class AppVersion implements Serializable, Comparable<AppVersion> {
         return changes;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
+    public int hashCode() {
+
+        return ObjectUtils.hashCode( this );
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+
+        return ObjectUtils.equals( this, obj );
+    }
+
     @Override
     public String toString() {
 
-        return String.format( "{%s - %s, [yt: %s]}", friendlyVersion, internalVersion, youTubeID );
+        return ObjectUtils.toString( this );
     }
 
     /**
@@ -254,7 +250,7 @@ public class AppVersion implements Serializable, Comparable<AppVersion> {
      * {@inheritDoc}
      */
     @Override
-    public int compareTo(AppVersion o) {
+    public int compareTo(final AppVersion o) {
 
         return getInternalVersion().compareTo( o.getInternalVersion() );
     }

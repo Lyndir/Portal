@@ -29,11 +29,9 @@ import java.io.Serializable;
  */
 public interface SourceProvider extends Serializable {
 
-    void setApp(App app);
-
     String getTitle();
 
-    String getHomepage();
+    String getHomepage(App app);
 
     String findSnapshotLinkFor(AppVersion version);
 

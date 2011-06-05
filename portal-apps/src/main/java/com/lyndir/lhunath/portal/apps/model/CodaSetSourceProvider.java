@@ -22,36 +22,7 @@ package com.lyndir.lhunath.portal.apps.model;
  *
  * @author lhunath
  */
-public class CodaSetSourceProvider extends AbstractSourceProvider {
-
-    /**
-     * Create a new {@link CodaSetSourceProvider} instance.
-     */
-    public CodaSetSourceProvider() {
-
-        this( null );
-    }
-
-    /**
-     * Create a new {@link CodaSetSourceProvider} instance.
-     *
-     * @param author The CodaSet username of the owner of the project.
-     */
-    public CodaSetSourceProvider(final String author) {
-
-        this( author, null );
-    }
-
-    /**
-     * Create a new {@link CodaSetSourceProvider} instance.
-     *
-     * @param author  The CodaSet username of the owner of the project.
-     * @param project The CodaSet project for the application.
-     */
-    public CodaSetSourceProvider(final String author, final String project) {
-
-        super( author, project );
-    }
+public class CodaSetSourceProvider implements SourceProvider {
 
     @Override
     public String getTitle() {
@@ -63,11 +34,12 @@ public class CodaSetSourceProvider extends AbstractSourceProvider {
      * {@inheritDoc}
      */
     @Override
-    public String getHomepage() {
+    public String getHomepage(final App app) {
 
-        return String.format( "http://codaset.com/%s/%s", //
-                              author == null? app.getAuthor(): author, //
-                              project == null? app.getInternalName(): project );
+        return String.format(
+                "http://codaset.com/%s/%s", //
+                app.getAuthor(), //
+                app.getSourceCodeName() );
     }
 
     /**
@@ -76,10 +48,11 @@ public class CodaSetSourceProvider extends AbstractSourceProvider {
     @Override
     public String findSnapshotLinkFor(final AppVersion version) {
 
-        return String.format( "http://codaset.com/%s/%s/source/%s/download", //
-                              author == null? app.getAuthor(): author, //
-                              project == null? app.getInternalName(): project, //
-                              version.getInternalVersion() );
+        return String.format(
+                "http://codaset.com/%s/%s/source/%s/download", //
+                version.getApp().getAuthor(), //
+                version.getApp().getSourceCodeName(), //
+                version.getInternalVersion() );
     }
 
     /**
@@ -88,9 +61,10 @@ public class CodaSetSourceProvider extends AbstractSourceProvider {
     @Override
     public String findTreeLinkFor(final AppVersion version) {
 
-        return String.format( "http://codaset.com/%s/%s/source/%s/tree", //
-                              author == null? app.getAuthor(): author, //
-                              project == null? app.getInternalName(): project, //
-                              version.getInternalVersion() );
+        return String.format(
+                "http://codaset.com/%s/%s/source/%s/tree", //
+                version.getApp().getAuthor(), //
+                version.getApp().getSourceCodeName(), //
+                version.getInternalVersion() );
     }
 }

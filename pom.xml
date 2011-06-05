@@ -36,8 +36,18 @@
 
     <modules>
         <module>portal-webapp</module>
-        <module>portal-lyndir</module>
         <module>portal-apps</module>
     </modules>
+
+    <profiles>
+        <profile>
+            <id>mod:ide</id>
+            <modules>
+                <module>portal-apps-deblock</module>
+                <module>portal-apps-gorillas</module>
+                <module>portal-lyndir</module>
+            </modules>
+        </profile>
+    </profiles>
 
 </project>

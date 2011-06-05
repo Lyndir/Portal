@@ -209,7 +209,7 @@ a:hover, .link:hover {
     width:                      180px;
 }
 #logo {
-    background:                 url('../images/logo.png') no-repeat center top;
+    background:                 url('../images/logo.back.png') no-repeat center top;
 
     height:                     260px;
 
@@ -325,7 +325,7 @@ a:hover, .link:hover {
     position:                   relative;
     width:                      800px;
     margin:                     0 auto;
-    padding:                    5em 0;
+    padding:                    7em 0 2em;
 }
 p.summary {
     color:                      #222;

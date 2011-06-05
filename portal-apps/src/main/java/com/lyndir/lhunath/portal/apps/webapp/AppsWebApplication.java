@@ -16,14 +16,16 @@ package com.lyndir.lhunath.portal.apps.webapp;
  *   limitations under the License.
  */
 
-import com.google.common.collect.ImmutableMap;
-import com.lyndir.lhunath.portal.apps.webapp.error.*;
-import com.lyndir.lhunath.portal.apps.webapp.page.*;
+import com.google.common.collect.ImmutableList;
+import com.lyndir.lhunath.portal.apps.error.*;
+import com.lyndir.lhunath.portal.apps.page.*;
 import com.lyndir.lhunath.portal.webapp.PortalWebApplication;
 import com.lyndir.lhunath.portal.webapp.listener.PortalGuiceContext;
-import java.util.Map;
+import com.lyndir.lhunath.portal.webapp.model.PortalPageMeta;
+import java.util.List;
 import org.apache.wicket.*;
 import org.apache.wicket.guice.InjectionFlagCachingGuiceComponentInjector;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.settings.IExceptionSettings;
 
@@ -55,23 +57,14 @@ public class AppsWebApplication extends PortalWebApplication {
     }
 
     @Override
-    protected Map<String, Class<? extends Page>> getMountPoints() {
+    public List<PortalPageMeta> getPortalPages() {
 
-        return ImmutableMap.<String, Class<? extends Page>>builder()
-                           .put( "demo", DemoPage.class )
-                           .put( "about", AboutPage.class )
-                           .put( "archive", ArchivePage.class )
-                           .put( "development", DevelopmentPage.class )
-                           .build();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Class<? extends Page> getHomePage() {
-
-        return DemoPage.class;
+        return ImmutableList.<PortalPageMeta>builder()
+                            .add( new PortalPageMeta( DemoPage.class, "demo", "♕", Model.of( "Demo" ) ) )
+                            .add( new PortalPageMeta( AboutPage.class, "about", "♔", Model.of( "About" ) ) )
+                            .add( new PortalPageMeta( ArchivePage.class, "versions", "♘", Model.of( "Versions" ) ) )
+                            .add( new PortalPageMeta( DevelopmentPage.class, "development", "♖", Model.of( "Development" ) ) )
+                            .build();
     }
 
     /**

@@ -15,6 +15,8 @@
  */
 package com.lyndir.lhunath.portal.apps.model;
 
+import static com.lyndir.lhunath.opal.system.util.ObjectUtils.ifNotNullElse;
+
 import java.io.Serializable;
 
 
@@ -29,12 +31,14 @@ import java.io.Serializable;
  */
 public class App implements Serializable {
 
-    private String author;
-    private String friendlyName;
-    private String internalName;
-    private SourceProvider sourceProvider;
-    private IssueTracker issueTracker;
-    private String googleAnalyticsID;
+    private final String         author;
+    private final String         friendlyName;
+    private final String         internalName;
+    private       String         sourceCodeName;
+    private       String         issueTrackerName;
+    private final SourceProvider sourceProvider;
+    private final IssueTracker   issueTracker;
+    private final String         googleAnalyticsID;
 
     /**
      * Create a new {@link App} instance.
@@ -49,21 +53,12 @@ public class App implements Serializable {
     public App(final String author, final String friendlyName, final String internalName, final SourceProvider sourceProvider,
                final IssueTracker issueTracker, final String googleAnalyticsID) {
 
-        setAuthor( author );
-        setFriendlyName( friendlyName );
-        setInternalName( internalName );
-        setSourceProvider( sourceProvider );
-        setIssueTracker( issueTracker );
-        sourceProvider.setApp( this );
-        setGoogleAnalyticsID( googleAnalyticsID );
-    }
-
-    /**
-     * @param author The author of this {@link App}.
-     */
-    public void setAuthor(final String author) {
-
         this.author = author;
+        this.friendlyName = friendlyName;
+        this.internalName = internalName;
+        this.sourceProvider = sourceProvider;
+        this.issueTracker = issueTracker;
+        this.googleAnalyticsID = googleAnalyticsID;
     }
 
     /**
@@ -75,27 +70,11 @@ public class App implements Serializable {
     }
 
     /**
-     * @param friendlyName The friendlyName of this {@link App}.
-     */
-    public void setFriendlyName(final String friendlyName) {
-
-        this.friendlyName = friendlyName;
-    }
-
-    /**
      * @return The friendlyName of this {@link App}.
      */
     public String getFriendlyName() {
 
         return friendlyName;
-    }
-
-    /**
-     * @param internalName The internalName of this {@link App}.
-     */
-    public void setInternalName(final String internalName) {
-
-        this.internalName = internalName;
     }
 
     /**
@@ -106,12 +85,24 @@ public class App implements Serializable {
         return internalName;
     }
 
-    /**
-     * @param sourceProvider The sourceProvider of this {@link App}.
-     */
-    public void setSourceProvider(final SourceProvider sourceProvider) {
+    public String getSourceCodeName() {
 
-        this.sourceProvider = sourceProvider;
+        return ifNotNullElse( sourceCodeName, getInternalName() );
+    }
+
+    public void setSourceCodeName(final String sourceCodeName) {
+
+        this.sourceCodeName = sourceCodeName;
+    }
+
+    public String getIssueTrackerName() {
+
+        return ifNotNullElse( issueTrackerName, getInternalName() );
+    }
+
+    public void setIssueTrackerName(final String issueTrackerName) {
+
+        this.issueTrackerName = issueTrackerName;
     }
 
     /**
@@ -125,19 +116,6 @@ public class App implements Serializable {
     public IssueTracker getIssueTracker() {
 
         return issueTracker;
-    }
-
-    public void setIssueTracker(final IssueTracker issueTracker) {
-
-        this.issueTracker = issueTracker;
-    }
-
-    /**
-     * @param googleAnalyticsID The googleAnalyticsID of this {@link App}.
-     */
-    public void setGoogleAnalyticsID(final String googleAnalyticsID) {
-
-        this.googleAnalyticsID = googleAnalyticsID;
     }
 
     /**

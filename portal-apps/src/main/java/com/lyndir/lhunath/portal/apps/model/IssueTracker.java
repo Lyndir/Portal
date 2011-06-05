@@ -29,9 +29,7 @@ import java.io.Serializable;
  */
 public interface IssueTracker extends Serializable {
 
-    void setApp(App app);
-
     String getTitle();
 
-    String getHomepage();
+    String getHomepage(App app);
 }

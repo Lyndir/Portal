@@ -13,6 +13,7 @@
 
     <groupId>com.lyndir.lhunath.portal</groupId>
     <artifactId>portal-webapp</artifactId>
+    <version>GIT-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>Lyndir Portal: Web Application</name>

@@ -21,7 +21,6 @@ import com.google.common.collect.ImmutableMap.Builder;
 import com.google.inject.*;
 import com.google.inject.servlet.GuiceServletContextListener;
 import com.google.inject.servlet.ServletModule;
-import com.lyndir.lhunath.opal.system.logging.Logger;
 import com.lyndir.lhunath.portal.webapp.PortalWebApplication;
 import java.util.Collection;
 import javax.servlet.ServletContext;
@@ -37,8 +36,6 @@ import org.apache.wicket.protocol.http.*;
  * @author lhunath
  */
 public abstract class PortalGuiceContext extends GuiceServletContextListener {
-
-    static final Logger logger = Logger.get( PortalGuiceContext.class );
 
     private static final String PATH_WICKET = "/*";
 

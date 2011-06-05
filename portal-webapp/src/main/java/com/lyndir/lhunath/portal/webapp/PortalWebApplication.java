@@ -1,6 +1,10 @@
 package com.lyndir.lhunath.portal.webapp;
 
-import java.util.Map;
+import static com.google.common.base.Preconditions.checkNotNull;
+
+import com.google.common.collect.Iterables;
+import com.lyndir.lhunath.portal.webapp.model.PortalPageMeta;
+import java.util.List;
 import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.target.coding.HybridUrlCodingStrategy;
@@ -18,9 +22,20 @@ public abstract class PortalWebApplication extends WebApplication {
     @Override
     protected void init() {
 
-        for (final Map.Entry<String, Class<? extends Page>> mountPoint : getMountPoints().entrySet())
-            mount( new HybridUrlCodingStrategy( mountPoint.getKey(), mountPoint.getValue() ) );
+        for (final PortalPageMeta portalPage : getPortalPages())
+            mount( new HybridUrlCodingStrategy( portalPage.getMountPoint(), portalPage.getPage() ) );
     }
 
-    protected abstract Map<String, Class<? extends Page>> getMountPoints();
+    public abstract List<PortalPageMeta> getPortalPages();
+
+    @Override
+    public Class<? extends Page> getHomePage() {
+
+        return checkNotNull( Iterables.getFirst( getPortalPages(), null ) ).getPage();
+    }
+
+    public static PortalWebApplication get() {
+
+        return (PortalWebApplication) WebApplication.get();
+    }
 }

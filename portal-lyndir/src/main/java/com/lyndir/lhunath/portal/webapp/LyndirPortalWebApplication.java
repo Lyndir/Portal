@@ -1,9 +1,11 @@
 package com.lyndir.lhunath.portal.webapp;
 
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
+import com.lyndir.lhunath.portal.webapp.model.PortalPageMeta;
 import com.lyndir.lhunath.portal.webapp.page.*;
-import java.util.Map;
+import java.util.List;
 import org.apache.wicket.Page;
+import org.apache.wicket.model.Model;
 
 
 /**
@@ -16,18 +18,12 @@ import org.apache.wicket.Page;
 public class LyndirPortalWebApplication extends PortalWebApplication {
 
     @Override
-    protected Map<String, Class<? extends Page>> getMountPoints() {
+    public List<PortalPageMeta> getPortalPages() {
 
-        return ImmutableMap.<String, Class<? extends Page>>builder()
-                           .put( "/about", AboutPage.class )
-                           .put( "/contact", ContactPage.class )
-                           .put( "/creations", CreationsPage.class )
-                           .build();
-    }
-
-    @Override
-    public Class<? extends Page> getHomePage() {
-
-        return AboutPage.class;
+        return ImmutableList.<PortalPageMeta>builder()
+                            .add( new PortalPageMeta( AboutPage.class, "about", "♔", Model.of( "About" ) ) )
+                            .add( new PortalPageMeta( ContactPage.class, "contact", "♗", Model.of( "Contact" ) ) )
+                            .add( new PortalPageMeta( CreationsPage.class, "creations", "♖", Model.of( "Creations" ) ) )
+                            .build();
     }
 }

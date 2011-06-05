@@ -13,6 +13,7 @@
 
     <groupId>com.lyndir.lhunath.portal</groupId>
     <artifactId>portal-lyndir</artifactId>
+    <version>GIT-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>Lyndir Portal: Lyndir</name>
@@ -32,6 +33,7 @@
                             <artifactId>portal-webapp</artifactId>
                             <excludes>
                                 <exclude>WEB-INF/web.xml</exclude>
+                                <exclude>WEB-INF/lib/*</exclude>
                             </excludes>
                         </overlay>
                     </overlays>

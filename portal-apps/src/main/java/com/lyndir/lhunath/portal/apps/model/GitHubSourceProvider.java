@@ -15,9 +15,6 @@
  */
 package com.lyndir.lhunath.portal.apps.model;
 
-import org.jetbrains.annotations.Nullable;
-
-
 /**
  * <h2>{@link GitHubSourceProvider}<br> <sub>Provides sources from github.com.</sub></h2>
  *
@@ -25,36 +22,7 @@ import org.jetbrains.annotations.Nullable;
  *
  * @author lhunath
  */
-public class GitHubSourceProvider extends AbstractSourceProvider {
-
-    /**
-     * Create a new {@link GitHubSourceProvider} instance.
-     */
-    public GitHubSourceProvider() {
-
-        this( null );
-    }
-
-    /**
-     * Create a new {@link GitHubSourceProvider} instance.
-     *
-     * @param author The GitHub username of the owner of the project.
-     */
-    public GitHubSourceProvider(@Nullable final String author) {
-
-        this( author, null );
-    }
-
-    /**
-     * Create a new {@link GitHubSourceProvider} instance.
-     *
-     * @param author  The GitHub username of the owner of the project.
-     * @param project The GitHub project for the application.
-     */
-    public GitHubSourceProvider(@Nullable final String author, @Nullable final String project) {
-
-        super( author, project );
-    }
+public class GitHubSourceProvider implements SourceProvider {
 
     @Override
     public String getTitle() {
@@ -66,11 +34,12 @@ public class GitHubSourceProvider extends AbstractSourceProvider {
      * {@inheritDoc}
      */
     @Override
-    public String getHomepage() {
+    public String getHomepage(final App app) {
 
-        return String.format( "http://wiki.github.com/%s/%s", //
-                              author == null? app.getAuthor(): author, //
-                              project == null? app.getFriendlyName(): project );
+        return String.format(
+                "http://wiki.github.com/%s/%s", //
+                app.getAuthor(), //
+                app.getSourceCodeName() );
     }
 
     /**
@@ -79,10 +48,11 @@ public class GitHubSourceProvider extends AbstractSourceProvider {
     @Override
     public String findSnapshotLinkFor(final AppVersion version) {
 
-        return String.format( "http://github.com/%s/%s/zipball/%s", //
-                              author == null? app.getAuthor(): author, //
-                              project == null? app.getFriendlyName(): project, //
-                              version.getInternalVersion() );
+        return String.format(
+                "http://github.com/%s/%s/zipball/%s", //
+                version.getApp().getAuthor(), //
+                version.getApp().getSourceCodeName(), //
+                version.getInternalVersion() );
     }
 
     /**
@@ -91,9 +61,10 @@ public class GitHubSourceProvider extends AbstractSourceProvider {
     @Override
     public String findTreeLinkFor(final AppVersion version) {
 
-        return String.format( "http://github.com/%s/%s/tree/%s", //
-                              author == null? app.getAuthor(): author, //
-                              project == null? app.getFriendlyName(): project, //
-                              version.getInternalVersion() );
+        return String.format(
+                "http://github.com/%s/%s/tree/%s", //
+                version.getApp().getAuthor(), //
+                version.getApp().getSourceCodeName(), //
+                version.getInternalVersion() );
     }
 }

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+
+    <body>
+        <wicket:extend>
+
+            <div class="text">
+                <wicket:message key="info">[Welcome to the versions archive. Here you'll find an overview of the current and past versions
+                    and access to their source code.] </wicket:message>
+            </div>
+
+            <div class="text entry" wicket:id="entries">
+                <img alt="Screenshot" wicket:id="screenshot" />
+
+                <h2>
+                    <wicket:message key="app.name">[App Name]</wicket:message> <span wicket:id="version">[1.0]</span> <sup wicket:id="date">[Jan
+                    1th, 2000]</sup>
+                </h2>
+
+                <wicket:enclosure child="youtube">
+                    <h3>
+                        <wicket:message key="video">[Video]</wicket:message>
+                    </h3>
+                    <ul>
+                        <li><a wicket:id="youtube">[ <wicket:message key="video.youtube">[YouTube]</wicket:message> ]</a></li>
+                        <li><a wicket:id="flash" rel="shadowbox;width=480;height=320">[ <wicket:message
+                                key="video.flash">[Flash]</wicket:message> ]</a></li>
+                        <li><a wicket:id="mpeg">[ <wicket:message key="video.mpeg4">[MPEG-4]</wicket:message> ]</a></li>
+                    </ul>
+                </wicket:enclosure>
+
+                <h3>
+                    <wicket:message key="changes">[Changes since last version]</wicket:message>
+                </h3>
+                <ul>
+                    <li wicket:id="changes"><span wicket:id="description">[Fixed foo to be bar]</span></li>
+                </ul>
+
+                <h3 class="floatstop">
+                    <wicket:message key="source">[Source Code]</wicket:message>
+                </h3>
+                <ul class="buttons" wicket:id="source">
+                    <li>
+                        <div class="button" wicket:id="treeLink">
+                            <wicket:message key="app.name">[App Name]</wicket:message>
+                            <span class="options">
+                                <span class="default option s28 alnum www1" />
+                                <span class="option s28 arrows arrow1-solid-down" wicket:id="snapshotLink" />
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+
+                <wicket:enclosure child="dependencies">
+                    <h3 class="floatstop">
+                        <wicket:message key="dependencies">[Dependencies]</wicket:message>
+                    </h3>
+                    <ul class="buttons" wicket:id="dependencies">
+                        <li>
+                            <div class="button" wicket:id="treeLink">
+                                <span wicket:id="name">[Cocos2D-iPhone]</span>
+                                <span class="options">
+                                    <span class="default option s28 alnum www1" />
+                                    <span class="option s28 arrows arrow1-solid-down" wicket:id="snapshotLink" />
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </wicket:enclosure>
+
+                <div class="floatstop"></div>
+            </div>
+
+        </wicket:extend>
+    </body>
+
+</html>

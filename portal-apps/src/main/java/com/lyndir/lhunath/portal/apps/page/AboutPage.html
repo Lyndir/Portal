@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+
+    <body>
+        <wicket:extend>
+
+            <div class="text">
+                <wicket:message key="info" />
+
+                <blockquote>
+                    <p><b><wicket:message key="features">[FEATURES]</wicket:message>:</b></p>
+                    <ul>
+                        <wicket:container wicket:id="versions">
+                            <li class="version">
+                                <span wicket:id="version">[1.0]</span>
+                            </li>
+                            <li wicket:id="changes">
+                                <wicket:container wicket:id="change">[Fixed foo to be bar]</wicket:container>
+                            </li>
+                        </wicket:container>
+                    </ul>
+                </blockquote>
+            </div>
+
+        </wicket:extend>
+    </body>
+
+</html>
