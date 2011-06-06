@@ -78,12 +78,8 @@ public abstract class AppsPage extends com.lyndir.lhunath.portal.webapp.page.Por
     @Override
     protected String loadFooter() {
 
-        return "";
-    }
-
-    @Override
-    protected IModel<String> getPageImage() {
-
-        return Model.of();
+        return String.format(
+                "%s %s <a href='http://www.lhunath.com'>Maarten Billemont</a>, <a href='http://www.lyndir.com'>Lyndir</a>",
+                getLocalizer().getString( "app.name", this ), getLocalizer().getString( "foot.by", this ) );
     }
 }

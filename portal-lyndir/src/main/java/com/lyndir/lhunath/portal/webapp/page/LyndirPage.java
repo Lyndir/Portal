@@ -10,6 +10,6 @@ public abstract class LyndirPage extends PortalPage {
     @Override
     protected String getGoogleAnalyticsID() {
 
-        return "UA-90535-8";
+        return "UA-90535-12";
     }
 }

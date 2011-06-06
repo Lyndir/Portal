@@ -1,7 +1,7 @@
 var _gaq = _gaq || [];
-_gaq.push(['lhunath._setAccount',       'UA-90535-8']);
-_gaq.push(['lhunath._setDomainName',    '.lhunath.com']);
-_gaq.push(['lhunath._trackPageview',    '/${pageView}']);
+_gaq.push(['lyndir._setAccount',       'UA-90535-12']);
+_gaq.push(['lyndir._setDomainName',    '.lyndir.com']);
+_gaq.push(['lyndir._trackPageview',    '/${pageView}']);
 _gaq.push(['app._setAccount',           '${googleAnalyticsID}']);
 _gaq.push(['app._trackPageview',        '/${pageView}']);
 

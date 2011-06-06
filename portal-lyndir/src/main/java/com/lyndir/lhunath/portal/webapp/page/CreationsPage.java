@@ -14,12 +14,6 @@ import org.apache.wicket.model.Model;
 public class CreationsPage extends LyndirPage {
 
     @Override
-    protected IModel<String> getPageImage() {
-
-        return new Model<String>( "images/resources/creations.1.png" );
-    }
-
-    @Override
     public IModel<String> getPageTitle() {
 
         return new Model<String>( "Creations" );

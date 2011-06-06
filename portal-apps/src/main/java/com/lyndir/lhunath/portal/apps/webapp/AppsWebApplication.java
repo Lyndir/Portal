@@ -17,17 +17,13 @@ package com.lyndir.lhunath.portal.apps.webapp;
  */
 
 import com.google.common.collect.ImmutableList;
-import com.lyndir.lhunath.portal.apps.error.*;
 import com.lyndir.lhunath.portal.apps.page.*;
 import com.lyndir.lhunath.portal.webapp.PortalWebApplication;
-import com.lyndir.lhunath.portal.webapp.listener.PortalGuiceContext;
 import com.lyndir.lhunath.portal.webapp.model.PortalPageMeta;
 import java.util.List;
 import org.apache.wicket.*;
-import org.apache.wicket.guice.InjectionFlagCachingGuiceComponentInjector;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.protocol.http.WebApplication;
-import org.apache.wicket.settings.IExceptionSettings;
 
 
 /**
@@ -37,24 +33,7 @@ import org.apache.wicket.settings.IExceptionSettings;
  *
  * @author lhunath
  */
-public class AppsWebApplication extends PortalWebApplication {
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void init() {
-
-        super.init();
-
-        getApplicationSettings().setPageExpiredErrorPage( PageExpiredErrorPage.class );
-        getApplicationSettings().setAccessDeniedPage( AccessDeniedErrorPage.class );
-        getApplicationSettings().setInternalErrorPage( InternalErrorPage.class );
-
-        getExceptionSettings().setUnexpectedExceptionDisplay( IExceptionSettings.SHOW_INTERNAL_ERROR_PAGE );
-
-        addComponentInstantiationListener( new InjectionFlagCachingGuiceComponentInjector( this, PortalGuiceContext.get() ) );
-    }
+public abstract class AppsWebApplication extends PortalWebApplication {
 
     @Override
     public List<PortalPageMeta> getPortalPages() {

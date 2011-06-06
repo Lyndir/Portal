@@ -3,14 +3,13 @@ package com.lyndir.lhunath.portal.webapp.page;
 import static com.lyndir.lhunath.opal.system.util.ObjectUtils.ifNotNullElse;
 
 import com.google.common.base.Function;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.lyndir.lhunath.opal.system.util.ObjectUtils;
 import com.lyndir.lhunath.opal.wayward.behavior.CSSClassAttributeAppender;
 import com.lyndir.lhunath.opal.wayward.behavior.CSSStyleAttributeAppender;
 import com.lyndir.lhunath.portal.webapp.PortalWebApplication;
 import com.lyndir.lhunath.portal.webapp.model.PortalPageMeta;
 import com.lyndir.lhunath.portal.webapp.model.StripItem;
-import java.util.List;
 import org.apache.wicket.RestartResponseException;
 import org.apache.wicket.behavior.StringHeaderContributor;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -36,14 +35,12 @@ import org.jetbrains.annotations.Nullable;
  */
 public abstract class PortalPage extends WebPage {
 
-    StripItem activeItem;
-
     protected PortalPage() {
 
         add( new Label( "pageTitle", getPageTitle() ) );
         add(
                 new ListView<StripItem>(
-                        "strip", getStripItems() ) {
+                        "strip", PortalWebApplication.get().getStripItems() ) {
 
                     @Override
                     protected void populateItem(final ListItem<StripItem> item) {
@@ -67,7 +64,9 @@ public abstract class PortalPage extends WebPage {
                                             @Override
                                             protected String load() {
 
-                                                return item.getModelObject().equals( activeItem )? "active": null;
+                                                boolean isActive = ObjectUtils.isEqual(
+                                                        item.getModelObject(), PortalWebApplication.get().getActiveItem() );
+                                                return isActive? "active": null;
                                             }
                                         } ) );
                     }
@@ -79,7 +78,7 @@ public abstract class PortalPage extends WebPage {
                             @Override
                             protected String load() {
 
-                                return String.format( "url('%s')", activeItem.getLogo() );
+                                return String.format( "url('%s')", PortalWebApplication.get().getActiveItem().getLogo() );
                             }
                         } ) ) );
         add(
@@ -110,8 +109,6 @@ public abstract class PortalPage extends WebPage {
                                         item.getModelObject().getPage().isAssignableFrom( getPageClass() )? "active": "" ) );
                     }
                 } );
-        //add( new Label( "pageHeading", getPageHeading() ) );
-        //add( new ContextImage( "pageImage", getPageImage() ) );
         add(
                 new Label(
                         "foot", new LoadableDetachableModel<String>() {
@@ -119,7 +116,7 @@ public abstract class PortalPage extends WebPage {
                     protected String load() {
 
                         return ifNotNullElse(
-                                activeItem.getFooter(), new Function<Model<String>, String>() {
+                                PortalWebApplication.get().getActiveItem().getFooter(), new Function<Model<String>, String>() {
                                     @Override
                                     public String apply(final Model<String> from) {
 
@@ -127,7 +124,7 @@ public abstract class PortalPage extends WebPage {
                                     }
                                 }, loadFooter() );
                     }
-                } ) );
+                } ).setEscapeModelStrings( false ) );
         add(
                 new StringHeaderContributor(
                         new LoadableDetachableModel<String>() {
@@ -142,6 +139,7 @@ public abstract class PortalPage extends WebPage {
                         } ) );
     }
 
+    @Nullable
     protected abstract String getGoogleAnalyticsID();
 
     @NotNull
@@ -150,36 +148,5 @@ public abstract class PortalPage extends WebPage {
         return "Copyright 2011, lhunath";
     }
 
-    protected IModel<? extends List<? extends StripItem>> getStripItems() {
-
-        return Model.ofList(
-                ImmutableList.of(
-                        activeItem = new StripItem(
-                                Model.of( "Lyndir" ), "images/icon.lyndir.png", "images/logo.png", "http://www.lyndir.com",
-                                Model.of( "Modern Design and Development" ), null ), //
-                        new StripItem(
-                                Model.of( "Gorillas" ), "images/icon.gorillas.png", "images/logo.png",
-                                "http://gorillas.lyndir.com",
-                                Model.of( "Gorillas is a resurrection of the classic QBasic game shipped with MS-DOS 5." ), null ), //
-                        new StripItem(
-                                Model.of( "DeBlock" ), "images/icon.deblock.png", "images/logo.png", "http://deblock.lyndir.com",
-                                Model.of(
-                                        "DeBlock is a block destruction game in the style of Bejuweled or Destruct-o-Block, but unique altogether." ),
-                                null ), //
-                        new StripItem(
-                                Model.of( "Opal" ), "images/icon.opal.png", "images/logo.png", "http://opal.lyndir.com",
-                                Model.of( "Collection of Java convenience libraries." ), null ), //
-                        new StripItem(
-                                Model.of( "iLibs" ), "images/icon.ilibs.png", "images/logo.png", "http://ilibs.lyndir.com",
-                                Model.of( "Collection of iOS convenience libraries." ), null ) ) );
-    }
-
     protected abstract IModel<String> getPageTitle();
-
-    protected IModel<String> getPageHeading() {
-
-        return getPageTitle();
-    }
-
-    protected abstract IModel<String> getPageImage();
 }

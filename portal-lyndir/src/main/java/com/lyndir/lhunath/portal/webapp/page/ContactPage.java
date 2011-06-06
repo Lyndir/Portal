@@ -14,12 +14,6 @@ import org.apache.wicket.model.Model;
 public class ContactPage extends LyndirPage {
 
     @Override
-    protected IModel<String> getPageImage() {
-
-        return new Model<String>( "images/resources/contact.1.png" );
-    }
-
-    @Override
     public IModel<String> getPageTitle() {
 
         return new Model<String>( "Contact" );

@@ -13,13 +13,16 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.lyndir.lhunath.portal.apps.error;
+package com.lyndir.lhunath.portal.webapp.error;
 
-import com.lyndir.lhunath.portal.apps.page.AppsPage;
+import com.lyndir.lhunath.portal.webapp.page.PortalPage;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+import org.jetbrains.annotations.Nullable;
 
 
 /**
- * <h2>{@link InternalErrorPage}<br> <sub>[in short] (TODO).</sub></h2>
+ * <h2>{@link PageExpiredErrorPage}<br> <sub>[in short] (TODO).</sub></h2>
  *
  * <p> [description / usage]. </p>
  *
@@ -27,6 +30,18 @@ import com.lyndir.lhunath.portal.apps.page.AppsPage;
  *
  * @author lhunath
  */
-public class InternalErrorPage extends AppsPage {
+public class PageExpiredErrorPage extends PortalPage {
 
+    @Nullable
+    @Override
+    protected String getGoogleAnalyticsID() {
+
+        return null;
+    }
+
+    @Override
+    protected IModel<String> getPageTitle() {
+
+        return Model.of("Page Expired");
+    }
 }

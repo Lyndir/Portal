@@ -1,10 +1,12 @@
 package com.lyndir.lhunath.portal.webapp;
 
 import com.google.common.collect.ImmutableList;
+import com.lyndir.lhunath.opal.system.logging.exception.InternalInconsistencyException;
+import com.lyndir.lhunath.opal.system.util.ObjectUtils;
 import com.lyndir.lhunath.portal.webapp.model.PortalPageMeta;
+import com.lyndir.lhunath.portal.webapp.model.StripItem;
 import com.lyndir.lhunath.portal.webapp.page.*;
 import java.util.List;
-import org.apache.wicket.Page;
 import org.apache.wicket.model.Model;
 
 
@@ -16,6 +18,16 @@ import org.apache.wicket.model.Model;
  * @author lhunath
  */
 public class LyndirPortalWebApplication extends PortalWebApplication {
+
+    @Override
+    public StripItem getActiveItem() {
+
+        for (final StripItem stripItem : getStripItems().getObject())
+            if (ObjectUtils.isEqual( stripItem.getLink(), "http://www.lyndir.com" ))
+                return stripItem;
+
+        throw new InternalInconsistencyException( "Active strip not found." );
+    }
 
     @Override
     public List<PortalPageMeta> getPortalPages() {
