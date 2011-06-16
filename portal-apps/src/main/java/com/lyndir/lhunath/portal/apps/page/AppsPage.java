@@ -56,6 +56,7 @@ public abstract class AppsPage extends com.lyndir.lhunath.portal.webapp.page.Por
                 } );
     }
 
+    @NotNull
     @Override
     protected String getGoogleAnalyticsID() {
 

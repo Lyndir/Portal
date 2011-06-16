@@ -139,7 +139,7 @@ public abstract class PortalPage extends WebPage {
                         } ) );
     }
 
-    @Nullable
+    @NotNull
     protected abstract String getGoogleAnalyticsID();
 
     @NotNull

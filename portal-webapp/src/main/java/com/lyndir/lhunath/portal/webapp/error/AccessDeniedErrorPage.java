@@ -18,6 +18,7 @@ package com.lyndir.lhunath.portal.webapp.error;
 import com.lyndir.lhunath.portal.webapp.page.PortalPage;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 
@@ -32,11 +33,11 @@ import org.jetbrains.annotations.Nullable;
  */
 public class AccessDeniedErrorPage extends PortalPage {
 
-    @Nullable
+    @NotNull
     @Override
     protected String getGoogleAnalyticsID() {
 
-        return null;
+        return "";
     }
 
     @Override
