@@ -41,11 +41,12 @@ public abstract class PortalWebApplication extends WebApplication {
                                     "DeBlock is a block destruction game in the style of Bejeweled or Destruct-o-Block, "
                                     + "but unique altogether." ), null ), //
                     new StripItem(
-                            Model.of( "Opal" ), "images/icon.opal.png", "images/logo.png", "http://opal.lyndir.com",
+                            Model.of( "Opal" ), "images/icon.opal.png", "images/logo.png", "https://github.com/Lyndir/Opal",
                             Model.of( "Collection of Java convenience libraries." ), null ), //
                     new StripItem(
-                            Model.of( "iLibs" ), "images/icon.ilibs.png", "images/logo.png", "http://ilibs.lyndir.com",
-                            Model.of( "Collection of iOS convenience libraries." ), null ) ) );
+                            Model.of( "Pearl" ), "images/icon.pearl.png", "images/logo.png", "https://github.com/Lyndir/Pearl",
+                            Model.of( "Modular collection of iOS libraries for things like UI, gaming, web services and crypto." ),
+                            null ) ) );
 
     @Override
     protected void init() {
