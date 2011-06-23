@@ -373,7 +373,7 @@ object {
     height:             515px;
     margin:             0 auto;
 }
-#preview .description {
+#preview .description, #preview #swf {
     color:              white;
 
     position:           absolute;
@@ -407,9 +407,6 @@ object {
 #preview .description:hover p {
     background:         transparent;
     display:            block;
-}
-#preview #swf {
-    margin-top:         32px;
 }
 #game {
     position:           relative;
